@@ -17,45 +17,67 @@ var game = {
 
     // Functions
     rollDice: function() {
-        n = Math.ceil(Math.random() * 6)                                 // return random number between 1 and 6
-        console.log(n)
-        $('.dice-num').text("Dice Roll: " + n)
-    }, 
+        if(n === undefined) {
+            console.log("Current player: " + game.currentPlayer.name)
+            n = Math.ceil(Math.random() * 6)
+            $('.dice-num').text("Dice Roll: " + n)
+        }
+        else {
+            console.log("Current player: " + game.currentPlayer.name)
+            n = Math.ceil(Math.random() * 6)
+            $('.dice-num').text("Dice Roll: " + n)
+            game.switchPlayer()
+        }
     
+        //console.log("Dice roll: " + n)
+        
+    }, 
+    switchPlayer: function() {
+        if(game.currentPlayer === game.player[0]) {
+            game.currentPlayer = game.player[1]
+        }
+        else if(game.currentPlayer === game.player[1]) {
+            game.currentPlayer = game.player[0]
+        }
+        console.log(game.currentPlayer.name)
+        $('.turn-bar').text('Turn: ' + game.currentPlayer.name)
+    },
+    movePiece: function() {
+        //console.log(this.id == game.currentPlayer.ident)        
+        if(this.id === game.currentPlayer.ident) {
+            //console.log('clicked piece')
+            var $spaceId = $(this).parent().prop("id")
+            //console.log("Space ID: " + $spaceId)
+            var $newSpaceNo = Number($spaceId) + n
+            //console.log("New space: " + $newSpaceNo)
+            $('#' + $newSpaceNo).append(this)
+            n = 0
+            game.switchPlayer()
+        }
+        else {
+            alert("Not your turn")
+        }
+    },
+    turn: function() {
+        $('.piece').on('click', game.movePiece)        
+    }
 }
+
+
+
 
 game.currentPlayer = game.player[0]
 var n = undefined
 
-$('#startBtn').on('click', function() {                                        // on click of start button, perform a function
-    console.log('clicked start')                                            // console log to confirm the click is working
-    $('#0').html(game.player[0].icon + game.player[1].icon)                 // to ID #1, add inner HTML of player icons
-    $('#startBtn').remove()                                                    // remove start button 
-    var $roll = $('<button>').addClass('roll').text('Roll')                 // create roll button
-    $('.roll-bar').prepend($roll)                                            // add roll button to roll-bar div
-    $('.roll').on('click', function () {                                    // on click of start button, perform a function
-        game.rollDice()
-        $('.piece').on('click', function() {
-            console.log(this.id == game.currentPlayer.ident)        
-            if(this.id === game.currentPlayer.ident) {
-                console.log('clicked piece')
-                var $spaceId = $(this).parent().prop("id")
-                console.log("Space ID: " + $spaceId)
-                var $newSpaceNo = Number($spaceId) + n
-                console.log("New space: " + $newSpaceNo)
-                $('#' + $newSpaceNo).append(this)
-                n = 0
-            }  
-        })
-    })                                     
-    
-
-    
-    
+$('#startBtn').on('click', function() {
+    //console.log('clicked start')
+    $('#0').append(game.player[0].icon + game.player[1].icon)
+    $('#startBtn').remove()
+    var $roll = $('<button>').addClass('roll').text('Roll')
+    $('.roll-bar').prepend($roll)
+    //$('.roll').on('click', game.rollDice)
+    $('.roll').on('click', game.rollDice)
 })
               
 
-// $('.piece').on('click', function() {
-//     $(this).appendTo()
-// })
 
