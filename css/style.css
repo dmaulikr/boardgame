@@ -39,6 +39,14 @@ h1 {
     font-size: 10px;
 }
 
+.red {
+    background: pink;
+}
+
+.gray {
+    background: lightgray;
+}
+
 p {
     position: absolute;
 }
