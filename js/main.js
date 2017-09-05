@@ -49,14 +49,13 @@ var game = {
             n = 0
             counter = 0
             if($(this).parent().prop("class") == "square backward") {
-                $(this).parent().addClass("red")
+                //$(this).parent().addClass("red")
                 $(this).fadeOut(1000, function() {
-                    $(this).parent().addClass("gray")
+                    //$(this).parent().addClass("gray")
                     $newSpaceNo -= 1
                     $('#' + $newSpaceNo).append(this)
                     $(this).fadeIn(1000)
                 })
-                
             }
         }
     }
