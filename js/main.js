@@ -44,10 +44,19 @@ var game = {
     movePiece: function() {
         if(this.id === game.currentPlayer.ident) {
             var $spaceId = $(this).parent().prop("id")
-            var $newSpaceNo = Number($spaceId) + n
-            $('#' + $newSpaceNo).append(this)
+            var newSpaceNo = undefined
+            //console.log($(this).parent().prop("class") == "square forward")
+            if($(this).parent().prop("class") == "square forward") {
+                newSpaceNo = Number($spaceId) + n
+                $('#' + newSpaceNo).append(this)
+            }
+            else if($(this).parent().prop("class") == "square backward") {
+                newSpaceNo = Number($spaceId) - n
+            }
+            
             n = 0
             counter = 0
+            console.log(newSpaceNo)            
         }
     }
 }
