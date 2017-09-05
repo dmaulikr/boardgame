@@ -3,17 +3,25 @@ html, body {
     padding: 0;
 }
 
-.board {
-    width: 520px;
-    margin: 0 auto;
-}
-
 h1 {
     margin: 0 0 25px 0;
     padding: 15px;
     font-family: sans-serif;
     text-align: center;
     background: aliceblue;
+}
+
+.start-bar {
+    height: 25px;
+}
+
+#startBtn {
+    margin-left: 25px;
+}
+
+.board {
+    width: 520px;
+    margin: 0 auto;
 }
 
 .square {
@@ -42,4 +50,12 @@ h1 {
 
 img:hover {
     transform: scale(2.1);
+}
+
+.roll-bar {
+    clear:both;
+}
+
+.roll {
+    margin-left: 25px;
 }

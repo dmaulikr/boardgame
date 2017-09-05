@@ -13,14 +13,16 @@
         <h1>Board Game</h1>
     </header>
     <main>
-        <button id="start">Start</button>
+        <div class="start-bar">
+            <button id="startBtn">Start</button>
+        </div>
         <div class="board">
             <div class="row-1">
-                <div id='1' class="square">start</div>
+                <div id='0' class="square">start</div>
                 <div class="square blank"></div>
-                <div class="square">4</div>
-                <div class="square">5</div>
-                <div class="square">6</div>
+                <div id='4' class="square">4</div>
+                <div id='5' class="square">5</div>
+                <div id='6' class="square">6</div>
                 <div class="square blank"></div>
                 <div class="square blank"></div>
                 <div class="square blank"></div>
@@ -28,15 +30,15 @@
                 <div class="square blank"></div>
             </div>
             <div class="row-2">
-                <div class="square">1</div>
-                <div class="square">2</div>
-                <div class="square">3</div>
+                <div id='1' class="square">1</div>
+                <div id='2' class="square">2</div>
+                <div id='3' class="square">3</div>
                 <div class="square blank"></div>
-                <div class="square">7</div>
+                <div id='7' class="square">7</div>
                 <div class="square blank"></div>
-                <div class="square">15</div>
-                <div class="square">16</div>
-                <div class="square">17</div>
+                <div id='15' class="square">15</div>
+                <div id='16' class="square">16</div>
+                <div id='17' class="square">17</div>
                 <div class="square blank"></div>
             </div>
             <div class="row-3">
@@ -44,79 +46,79 @@
                 <div class="square blank"></div>
                 <div class="square blank"></div>
                 <div class="square blank"></div>
-                <div class="square">8</div>
+                <div id='8' class="square">8</div>
                 <div class="square blank"></div>
-                <div class="square">14</div>
+                <div id='14' class="square">14</div>
                 <div class="square blank"></div>
-                <div class="square">18</div>
+                <div id='18' class="square">18</div>
                 <div class="square blank"></div>
             </div>
             <div class="row-4">
-                <div class="square">37</div>
-                <div class="square">36</div>
-                <div class="square">35</div>
+                <div id='37' class="square">37</div>
+                <div id='36' class="square">36</div>
+                <div id='35' class="square">35</div>
                 <div class="square blank"></div>
-                <div class="square">9</div>
+                <div id='9' class="square">9</div>
                 <div class="square blank"></div>
-                <div class="square">13</div>
+                <div id='13' class="square">13</div>
                 <div class="square blank"></div>
-                <div class="square">19</div>
-                <div class="square">20</div>
+                <div id='19' class="square">19</div>
+                <div id='20' class="square">20</div>
             </div>
             <div class="row-5">
-                <div class="square">38</div>
+                <div id='38' class="square">38</div>
                 <div class="square blank"></div>
-                <div class="square">34</div>
+                <div id='34' class="square">34</div>
                 <div class="square blank"></div>
-                <div class="square">10</div>
-                <div class="square">11</div>
-                <div class="square">12</div>
+                <div id='10' class="square">10</div>
+                <div id='11' class="square">11</div>
+                <div id='12' class="square">12</div>
                 <div class="square blank"></div>
                 <div class="square blank"></div>
-                <div class="square">21</div>
+                <div id='21' class="square">21</div>
             </div>
             <div class="row-6">
-                <div class="square">39</div>
+                <div id='39' class="square">39</div>
                 <div class="square blank"></div>
-                <div class="square">33</div>
-                <div class="square blank"></div>
-                <div class="square blank"></div>
+                <div id='33' class="square">33</div>
                 <div class="square blank"></div>
                 <div class="square blank"></div>
                 <div class="square blank"></div>
-                <div class="square">23</div>
-                <div class="square">22</div>
+                <div class="square blank"></div>
+                <div class="square blank"></div>
+                <div id='23' class="square">23</div>
+                <div id='22' class="square">22</div>
             </div>
             <div class="row-7">
-                <div class="square">40</div>
+                <div id='0' class="square">40</div>
                 <div class="square blank"></div>
-                <div class="square">32</div>
-                <div class="square">31</div>
-                <div class="square">30</div>
-                <div class="square">29</div>
+                <div id='32' class="square">32</div>
+                <div id='31' class="square">31</div>
+                <div id='30' class="square">30</div>
+                <div id='29' class="square">29</div>
                 <div class="square blank"></div>
                 <div class="square blank"></div>
-                <div class="square">24</div>
+                <div id='24' class="square">24</div>
                 <div class="square blank"></div>
             </div>
             <div class="row-8">
-                <div class="square">41</div>
+                <div id='41' class="square">41</div>
                 <div class="square blank"></div>
                 <div class="square blank"></div>
                 <div class="square blank"></div>
                 <div class="square blank"></div>
-                <div class="square">28</div>
-                <div class="square">27</div>
-                <div class="square">26</div>
-                <div class="square">25</div>
+                <div id='28' class="square">28</div>
+                <div id='27' class="square">27</div>
+                <div id='26' class="square">26</div>
+                <div id='25' class="square">25</div>
                 <div class="square blank"></div>
             </div>
             <div class="row-9">
-                <div class="square">42</div>
-                <div class="square">43</div>
-                <div class="square">44</div>
-                <div class="square">45</div>
-                <div class="square">46</div>
+                <div id='42' class="square">42</div>
+                <div id='43' class="square">43</div>
+                <div id='44' class="square">44</div>
+                <div id='45' class="square">45</div>
+                <div id='46' class="square">46</div>
                 <div class="square blank"></div>
                 <div class="square blank"></div>
                 <div class="square blank"></div>
@@ -128,13 +130,15 @@
                 <div class="square blank"></div>
                 <div class="square blank"></div>
                 <div class="square blank"></div>
-                <div class="square">47</div>
-                <div class="square">48</div>
-                <div class="square">49</div>
-                <div class="square">50</div>
-                <div class="square">51</div>
-                <div class="square">finish</div>
+                <div id='47' class="square">47</div>
+                <div id='48' class="square">48</div>
+                <div id='49' class="square">49</div>
+                <div id='50' class="square">50</div>
+                <div id='51' class="square">51</div>
+                <div id='52' class="square">finish</div>
             </div>
+        </div>
+        <div class="roll-bar">
         </div>
     </main>
     <footer></footer>
