@@ -19,6 +19,7 @@ var game = {
     rollDice: function() {
         n = Math.ceil(Math.random() * 6)                                 // return random number between 1 and 6
         console.log(n)
+        $('.dice-num').text("Dice Roll: " + n)
     }, 
     
 }
@@ -31,7 +32,7 @@ $('#startBtn').on('click', function() {                                        /
     $('#0').html(game.player[0].icon + game.player[1].icon)                 // to ID #1, add inner HTML of player icons
     $('#startBtn').remove()                                                    // remove start button 
     var $roll = $('<button>').addClass('roll').text('Roll')                 // create roll button
-    $('.roll-bar').append($roll)                                            // add roll button to roll-bar div
+    $('.roll-bar').prepend($roll)                                            // add roll button to roll-bar div
     $('.roll').on('click', function () {                                    // on click of start button, perform a function
         game.rollDice()
         $('.piece').on('click', function() {

@@ -21,7 +21,7 @@ h1 {
 
 .board {
     width: 520px;
-    margin: 0 auto;
+    margin: 0 auto 20px;
 }
 
 .square {
@@ -52,10 +52,16 @@ img:hover {
     transform: scale(2.1);
 }
 
+.clear-both {
+    clear: both;
+}
+
 .roll-bar {
-    clear:both;
+    margin-top: 50px;
+    background: aliceblue;
+    min-height: 50px;
 }
 
 .roll {
-    margin-left: 25px;
+    margin: 10px 25px;
 }
