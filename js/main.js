@@ -21,16 +21,17 @@ var game = {
             game.rollDice()
         }
         else if(counter === 0) {            
-            game.switchPlayer()
+            game.switchPlayer()   
             game.rollDice()
         }
     }, 
     rollDice: function() {
         n = Math.ceil(Math.random() * 6)
         $('.dice-num').text("Dice Roll: " + n)
-        $('.turn-bar').text("Turn " + game.currentPlayer.name)
+        $('.turn-bar').text("Turn: " + game.currentPlayer.name)
         counter += 1
-        $('.piece').on('click', game.movePiece)
+        $('.piece').on('click', game.movePiece)         
+        
     },
     switchPlayer: function() {
         if(game.currentPlayer === game.player[0]) {
@@ -42,11 +43,8 @@ var game = {
     },
     movePiece: function() {
         if(this.id === game.currentPlayer.ident) {
-            //console.log('clicked piece')
             var $spaceId = $(this).parent().prop("id")
-            //console.log("Space ID: " + $spaceId)
             var $newSpaceNo = Number($spaceId) + n
-            //console.log("New space: " + $newSpaceNo)
             $('#' + $newSpaceNo).append(this)
             n = 0
             counter = 0
