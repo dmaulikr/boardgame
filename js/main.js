@@ -16,22 +16,22 @@ var game = {
     ],
 
     // Functions
-    // rollDice: function() {
-    //     if(n === undefined) {
-    //         console.log("Current player: " + game.currentPlayer.name)
-    //         n = Math.ceil(Math.random() * 6)
-    //         $('.dice-num').text("Dice Roll: " + n)
-    //     }
-    //     else {
-    //         console.log("Current player: " + game.currentPlayer.name)
-    //         n = Math.ceil(Math.random() * 6)
-    //         $('.dice-num').text("Dice Roll: " + n)
-    //         game.switchPlayer()
-    //     }
-    
-    //     //console.log("Dice roll: " + n)
-        
-    // }, 
+    turn: function() {
+        if(counter === undefined) {
+            game.rollDice()
+        }
+        else if(counter === 0) {            
+            game.switchPlayer()
+            game.rollDice()
+        }
+    }, 
+    rollDice: function() {
+        n = Math.ceil(Math.random() * 6)
+        $('.dice-num').text("Dice Roll: " + n)
+        $('.turn-bar').text("Turn " + game.currentPlayer.name)
+        counter += 1
+        $('.piece').on('click', game.movePiece)
+    },
     switchPlayer: function() {
         if(game.currentPlayer === game.player[0]) {
             game.currentPlayer = game.player[1]
@@ -39,28 +39,19 @@ var game = {
         else if(game.currentPlayer === game.player[1]) {
             game.currentPlayer = game.player[0]
         }
-        console.log(game.currentPlayer.name)
-        $('.turn-bar').text('Turn: ' + game.currentPlayer.name)
     },
-    // movePiece: function() {
-    //     //console.log(this.id == game.currentPlayer.ident)        
-    //     if(this.id === game.currentPlayer.ident) {
-    //         //console.log('clicked piece')
-    //         var $spaceId = $(this).parent().prop("id")
-    //         //console.log("Space ID: " + $spaceId)
-    //         var $newSpaceNo = Number($spaceId) + n
-    //         //console.log("New space: " + $newSpaceNo)
-    //         $('#' + $newSpaceNo).append(this)
-    //         n = 0
-    //         game.switchPlayer()
-    //     }
-    //     else {
-    //         alert("Not your turn")
-    //     }
-    // },
-    // turn: function() {
-    //     $('.piece').on('click', game.movePiece)        
-    // }
+    movePiece: function() {
+        if(this.id === game.currentPlayer.ident) {
+            //console.log('clicked piece')
+            var $spaceId = $(this).parent().prop("id")
+            //console.log("Space ID: " + $spaceId)
+            var $newSpaceNo = Number($spaceId) + n
+            //console.log("New space: " + $newSpaceNo)
+            $('#' + $newSpaceNo).append(this)
+            n = 0
+            counter = 0
+        }
+    }
 }
 
 
@@ -76,45 +67,7 @@ $('#startBtn').on('click', function() {
     $('#startBtn').remove()
     var $roll = $('<button>').addClass('roll').text('Roll')
     $('.roll-bar').prepend($roll)
-    $('.roll').on('click', function() {
-        if(counter === undefined) {
-            n = Math.ceil(Math.random() * 6)
-            $('.dice-num').text("Dice Roll: " + n)
-            $('.turn-bar').text("Turn " + game.currentPlayer.name)
-            counter += 1
-            $('.piece').on('click', function() {
-                if(this.id === game.currentPlayer.ident) {
-                    //console.log('clicked piece')
-                    var $spaceId = $(this).parent().prop("id")
-                    //console.log("Space ID: " + $spaceId)
-                    var $newSpaceNo = Number($spaceId) + n
-                    //console.log("New space: " + $newSpaceNo)
-                    $('#' + $newSpaceNo).append(this)
-                    n = 0
-                    counter = 0
-                    console.log(game.currentPlayer.name)
-                }
-            })
-        }
-        else if(counter === 0) {            
-            game.switchPlayer()
-            n = Math.ceil(Math.random() * 6)
-            $('.dice-num').text("Dice Roll: " + n)
-            counter += 1
-            $('.piece').on('click', function() {
-                if(this.id === game.currentPlayer.ident) {
-                    //console.log('clicked piece')
-                    var $spaceId = $(this).parent().prop("id")
-                    //console.log("Space ID: " + $spaceId)
-                    var $newSpaceNo = Number($spaceId) + n
-                    //console.log("New space: " + $newSpaceNo)
-                    $('#' + $newSpaceNo).append(this)
-                    n = 0
-                    counter = 0
-                }
-            })
-        }
-    })
+    $('.roll').on('click', game.turn)
 })
               
 
