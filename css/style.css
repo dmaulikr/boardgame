@@ -64,6 +64,11 @@ p {
     width: 50%;
     display: block;
     margin: 0 auto;
+    position: relative;
+}
+
+#piece-1 {
+    z-index: 100;
 }
 
 img:hover {
