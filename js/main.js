@@ -16,6 +16,7 @@ var game = {
     ],
     n: undefined,
     counter: undefined,
+    modal: $('.modal'),
 
     // Functions
     turn: function() {
@@ -49,54 +50,41 @@ var game = {
     skipForward: function() {
 
     },
+    gameOver: function() {
+        if($('#52').html() !== '') {
+            console.log("winner")
+            $('.modal').css({"display": "initial"})
+            $('h1').text('Winner!')
+        }
+        else{
+            return false
+        }
+    },
     movePiece: function() {
-        if(this.id === game.currentPlayer.ident) {
+        if(this.id === game.currentPlayer.ident && game.gameOver() == false) {
             var $this = $(this)
             var $currentSpaceNo = Number($this.parent().prop("id"))
             var $newSpaceNo = Number($(this).parent().prop("id")) + n
             var $newSpace = $('#' + $newSpaceNo)
-            
-            //console.log("New space num: " + $newSpaceNo)
-            //console.log("New space: " + $newSpace)
-            
-        
-            
+                
+        // Not working!
+        /*
             console.log("Current space num: " + $currentSpaceNo)
             console.log("New space no: " + $newSpaceNo)
-           
 
+            setTimeout(function() {
                 for(var i = $currentSpaceNo; i <= $newSpaceNo; i++) {
-                
-
-                    var $spaceNo = $currentSpaceNo + i
-                    console.log("Space num: " + $spaceNo)
-                    var $space = $('#' + $spaceNo)
-                    $space.append($this)
-                    
-                    setTimeout(function(i) {
-                        $space.append($this)
-                        console.log('click')
-                    }, 500)
+                var $spaceNo = $currentSpaceNo + i
+                console.log("Space num: " + $spaceNo)
+                var $space = $('#' + $spaceNo)
+                $space.append($this)
                 }
+                
+            }, 500)
+            */
 
-
-
-                // function loopn(i, fn, delay) {
-                //     if (i <= $newSpaceNo) {
-                //         fn(); 
-                //         if(i > 1) {
-                //             setTimeout(function() {
-                //                 loopn(i - 1, fn, delay);
-                //             }, delay)
-                //         }
-                //     }
-                // }
-        
-                // loopn(10, function() {
-                //     console.log('hello there')
-                // }, 1000)
             
-            //$newSpace.append($this)
+            $newSpace.append($this)
             n = 0
             game.counter = 0
             if($this.parent().prop("class") == "square backward") {
