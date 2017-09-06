@@ -4,13 +4,13 @@ var game = {
         {
             name: "Player 1",
             score: 0,
-            icon: '<img id="piece-1" class="piece smoothmove" src="https://lh3.googleusercontent.com/ez8pDFoxU2ZqDmyfeIjIba6dWisd8MY_6choHhZNpO0WwLhICu0v0s5eV2WHOhuhKw=w170">',
+            icon: '<img id="piece-1" class="piece" src="https://lh3.googleusercontent.com/ez8pDFoxU2ZqDmyfeIjIba6dWisd8MY_6choHhZNpO0WwLhICu0v0s5eV2WHOhuhKw=w170">',
             ident: "piece-1" 
         },
         {
             name: "Player 2",
             score: 0,
-            icon: '<img id="piece-2" class="piece smoothmove" src="https://clipartion.com/wp-content/uploads/2015/10/penguin-clip-art-for-kids-free-clipart-images-1024x1024.png">',
+            icon: '<img id="piece-2" class="piece" src="https://clipartion.com/wp-content/uploads/2015/10/penguin-clip-art-for-kids-free-clipart-images-1024x1024.png">',
             ident: "piece-2"
         }
     ],
@@ -41,6 +41,12 @@ var game = {
             game.currentPlayer = game.player[0]
         }
     },
+    skipBack: function() {
+        
+    },
+    skipForward: function() {
+
+    },
     gameOver: function() {
         if($('#52').html() !== '') {
             console.log("winner")
@@ -51,6 +57,7 @@ var game = {
             return false
         }
     },
+    
     movePiece: function() {
         if(this.id === game.currentPlayer.ident && game.gameOver() == false) {
             
