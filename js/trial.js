@@ -19,6 +19,7 @@ var game = {
         n = 0
         game.rollClear = 0
         game.switchPlayer()
+        $('.roll').css({"background": "#75B775"})
     },
     switchPlayer: function() {
         if(game.currentPlayer === game.player[0] && game.rollClear === 0){
@@ -27,19 +28,24 @@ var game = {
         else if(game.currentPlayer === game.player[1] && game.rollClear === 0) {
             game.currentPlayer = game.player[0]
         }
-        console.log(game.currentPlayer.name)
-        $('.turn-bar').text("Turn: " + game.currentPlayer.name)
+        $('.turn-bar').text("Turn: " + game.currentPlayer.name)                             //console.log(game.currentPlayer.name)
     },
-    fadeBack: function() {
+    // fadeBack: function() {
 
+    // },
+    // fadeForward: function() {
+
+    // },
+    gameOver: function(){
+        if($('#52').html() !== '') {
+            console.log("winner")
+            return "winner"
+        }
     },
     movePiece: function() {
-        if($(this).prop("id") == game.currentPlayer.iden && game.rollClear !== 0){
-            var $currentSquareNum = Number($(this).parent().prop("id"))
-            console.log("current sq num: " + $currentSquareNum)
-            var newSquareNum = $currentSquareNum + n
-            console.log("new sq num: " + newSquareNum)
-            console.log("n: " + n)
+        if($(this).prop("id") == game.currentPlayer.iden && game.rollClear !== 0 && game.gameOver() !== "winner"){
+            var $currentSquareNum = Number($(this).parent().prop("id"))         //console.log("current sq num: " + $currentSquareNum)
+            var newSquareNum = $currentSquareNum + n                            //console.log("new sq num: " + newSquareNum)    //console.log("n: " + n)
             var $newSquare = $('#' + newSquareNum)
             $newSquare.append($(this))                   
             
@@ -59,8 +65,24 @@ var game = {
                     $(this).fadeIn(1000)
                 })
             }
-        }                
-    }
+            else if(newSquareNum === 52) {
+                $('h1').text('Winner')
+                $('body').css({"background-image": "url('images/giphy.gif')"})
+            }
+        }  
+        /*else if($(this).prop("id") != game.currentPlayer.iden && game.rollClear !== 0) {
+            alert('Not your turn!')
+        } */         
+    },
+    roll: function() {
+        if(game.rollClear === 0) {
+            n = Math.ceil(Math.random() * 6)                                //console.log("n on roll: " + n)
+            $('.dice-num').text("You rolled a " + n)
+            game.rollClear += 1
+            $('.roll').css({"background": "white"})
+            $('.piece').on('click', game.movePiece)
+        }
+    },
 }
 
 game.currentPlayer = game.player[0]
@@ -74,15 +96,5 @@ $('#startBtn').on('click', function() {
     $('.roll-bar').prepend($roll)
     $('.turn-bar').text("Turn: " + game.currentPlayer.name)
 
-    $roll.on('click', function() {
-        if(game.rollClear === 0) {
-            
-            n = Math.ceil(Math.random() * 6)
-            console.log("n on roll: " + n)
-            $('.dice-num').text("You rolled a " + n)
-            game.rollClear += 1
-
-            $('.piece').on('click', game.movePiece)
-        }
-    })
+    $roll.on('click', game.roll)
 })
