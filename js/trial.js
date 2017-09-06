@@ -42,6 +42,22 @@ var game = {
             return "winner"
         }
     },
+    bump: function($piece, targetNum) {
+        if($piece.parent().prop("class") == "square backward") {
+            $piece.fadeOut(1000, function() {
+                targetNum -= 1
+                $('#' + targetNum).append($piece)
+                $piece.fadeIn(1000)
+            })
+        }
+        else if($piece.parent().prop("class") == "square forward") {
+            $piece.fadeOut(1000, function() {
+                targetNum += 1
+                $('#' + targetNum).append($piece)
+                $piece.fadeIn(1000)
+            })
+        }
+    },
     movePiece: function() {
         if($(this).prop("id") == game.currentPlayer.iden && game.rollClear !== 0 && game.gameOver() !== "winner"){
             var $currentSquareNum = Number($(this).parent().prop("id"))         //console.log("current sq num: " + $currentSquareNum)
@@ -51,21 +67,9 @@ var game = {
             
             game.turnOver()
 
-            if($(this).parent().prop("class") == "square backward") {
-                $(this).fadeOut(1000, function() {
-                    newSquareNum -= 1
-                    $('#' + newSquareNum).append($(this))
-                    $(this).fadeIn(1000)
-                })
-            }
-            else if($(this).parent().prop("class") == "square forward") {
-                $(this).fadeOut(1000, function() {
-                    newSquareNum += 1
-                    $('#' + newSquareNum).append($(this))
-                    $(this).fadeIn(1000)
-                })
-            }
-            else if(newSquareNum === 52) {
+            game.bump($(this), newSquareNum)
+            
+            if(newSquareNum === 52) {
                 $('h1').text('Winner')
                 $('body').css({"background-image": "url('images/giphy.gif')"})
             }
@@ -89,12 +93,24 @@ game.currentPlayer = game.player[0]
 var n = undefined
 
 
-$('#startBtn').on('click', function() {
-    $('#0').append(game.player[0].icon).append(game.player[1].icon)
-    $('#startBtn').remove()
+$('form').on('submit', function(evnt) {
+    evnt.preventDefault()
+    game.player[0].name = $('#p1-name').val() || "Player 1"
+    game.player[1].name = $('#p2-name').val() || "Player 2"
+    $('form').fadeOut(1000, function() {
+        //var $playerTurn = $('<p>').addClass("turnPara").text("Turn: " + game.currentPlayer.name)
+        //$('.turn-bar').append($playerTurn)
+        //$playerTurn.fadeIn(1000)
+        $('.turn-bar').text("Turn: " + game.currentPlayer.name)
+    })
+
+    $('#0').append(game.player[0].icon, game.player[1].icon)
+    $('.piece').fadeIn(1000)
     var $roll = $('<button>').addClass('roll').text('Roll')
-    $('.roll-bar').prepend($roll)
-    $('.turn-bar').text("Turn: " + game.currentPlayer.name)
+    $('.roll-bar').append($roll)
+    $('.roll').fadeIn(1000)
 
     $roll.on('click', game.roll)
+    
 })
+
