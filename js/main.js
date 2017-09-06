@@ -41,13 +41,45 @@ var game = {
             game.currentPlayer = game.player[0]
         }
     },
+    gameOver: function() {
+        if($('#52').html() !== '') {
+            console.log("winner")
+            $('.modal').css({"display": "initial"})
+            $('h1').text('Winner!')
+        }
+        else{
+            return false
+        }
+    },
     movePiece: function() {
-        if(this.id === game.currentPlayer.ident) {
-            var $spaceId = $(this).parent().prop("id")
-            var $newSpaceNo = Number($spaceId) + n
-            var $newSquare = $('#' + $newSpaceNo)
+        if(this.id === game.currentPlayer.ident && game.gameOver() == false) {
+            
             var $this = $(this)
-            $newSquare.append($this)
+            //var $spaceId = $(this).parent().prop("id")
+            var $currentSpaceNo = Number($this.parent().prop("id"))
+            var $newSpaceNo = $currentSpaceNo + n
+            var $newSpace = $('#' + $newSpaceNo)
+            
+            // Not working!
+
+            /*
+            console.log("current space num: " + $currentSpaceNo)
+            console.log("new space num: " + $newSpaceNo)
+
+            setTimeout(function() {
+                for(var i = $currentSpaceNo; i <= $newSpaceNo; i += 1) {
+                    var $spaceNo = $currentSpaceNo + i
+                    console.log("space num: " + $spaceNo)
+                    var $space = $('#' + $spaceNo)
+                    $space.append($this)
+                }
+            }, 500)
+            */
+
+
+
+
+            $newSpace.append($this)
             n = 0
             counter = 0
             if($(this).parent().prop("class") == "square backward") {
