@@ -58,6 +58,12 @@ var game = {
             })
         }
     },
+    checkWinner: function(target) {
+        if(target === 52) {
+            $('h1').text('Winner')
+            $('body').css({"background-image": "url('images/giphy.gif')"})
+        }
+    },
     movePiece: function() {
         if($(this).prop("id") == game.currentPlayer.iden && game.rollClear !== 0 && game.gameOver() !== "winner"){
             var $currentSquareNum = Number($(this).parent().prop("id"))         //console.log("current sq num: " + $currentSquareNum)
@@ -69,10 +75,9 @@ var game = {
 
             game.bump($(this), newSquareNum)
             
-            if(newSquareNum === 52) {
-                $('h1').text('Winner')
-                $('body').css({"background-image": "url('images/giphy.gif')"})
-            }
+            game.checkWinner(newSquareNum)
+                
+            
         }  
         /*else if($(this).prop("id") != game.currentPlayer.iden && game.rollClear !== 0) {
             alert('Not your turn!')
