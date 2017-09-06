@@ -52,37 +52,49 @@ var game = {
     movePiece: function() {
         if(this.id === game.currentPlayer.ident) {
             var $this = $(this)
+            var $currentSpaceNo = Number($this.parent().prop("id"))
             var $newSpaceNo = Number($(this).parent().prop("id")) + n
             var $newSpace = $('#' + $newSpaceNo)
-            var $parent = $this.parent()
+            
+            //console.log("New space num: " + $newSpaceNo)
+            //console.log("New space: " + $newSpace)
+            
+        
+            
+            console.log("Current space num: " + $currentSpaceNo)
+            console.log("New space no: " + $newSpaceNo)
+           
 
-            var x = $parent.offset().left
-            console.log(x)
-            var y = $parent.offset().top
-            console.log(y)
+                for(var i = $currentSpaceNo; i <= $newSpaceNo; i++) {
+                
 
-            var xi = $newSpace.offset().left
-            console.log(xi)
-            var yi = $newSpace.offset().top
-            console.log(yi)
-            
-            //$this.css({'left': 0}).css({'top': 0})
-            $this.animate({left: xi, top: yi})
-            console.log($this.offset().left)
-            console.log($this.offset().top)
-            // $this.each(function(index){
-            //     var xi = $this.offset().left
-            //     var yi = $this.offset().top
-            //     $this.css('left', xi).css('top'.yi)
-            //     $this.click(function(){
-            //         $this.animate({left: x, top:y})
-            //     })
-            // })
-            
-            
-            
-            
-            
+                    var $spaceNo = $currentSpaceNo + i
+                    console.log("Space num: " + $spaceNo)
+                    var $space = $('#' + $spaceNo)
+                    $space.append($this)
+                    
+                    setTimeout(function(i) {
+                        $space.append($this)
+                        console.log('click')
+                    }, 500)
+                }
+
+
+
+                // function loopn(i, fn, delay) {
+                //     if (i <= $newSpaceNo) {
+                //         fn(); 
+                //         if(i > 1) {
+                //             setTimeout(function() {
+                //                 loopn(i - 1, fn, delay);
+                //             }, delay)
+                //         }
+                //     }
+                // }
+        
+                // loopn(10, function() {
+                //     console.log('hello there')
+                // }, 1000)
             
             //$newSpace.append($this)
             n = 0
