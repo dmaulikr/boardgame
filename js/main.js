@@ -4,13 +4,13 @@ var game = {
         {
             name: "Player 1",
             score: 0,
-            icon: '<img id="piece-1" class="piece" src="https://lh3.googleusercontent.com/ez8pDFoxU2ZqDmyfeIjIba6dWisd8MY_6choHhZNpO0WwLhICu0v0s5eV2WHOhuhKw=w170">',
+            icon: '<img id="piece-1" class="piece smoothmove" src="https://lh3.googleusercontent.com/ez8pDFoxU2ZqDmyfeIjIba6dWisd8MY_6choHhZNpO0WwLhICu0v0s5eV2WHOhuhKw=w170">',
             ident: "piece-1" 
         },
         {
             name: "Player 2",
             score: 0,
-            icon: '<img id="piece-2" class="piece" src="https://clipartion.com/wp-content/uploads/2015/10/penguin-clip-art-for-kids-free-clipart-images-1024x1024.png">',
+            icon: '<img id="piece-2" class="piece smoothmove" src="https://clipartion.com/wp-content/uploads/2015/10/penguin-clip-art-for-kids-free-clipart-images-1024x1024.png">',
             ident: "piece-2"
         }
     ],
@@ -45,7 +45,9 @@ var game = {
         if(this.id === game.currentPlayer.ident) {
             var $spaceId = $(this).parent().prop("id")
             var $newSpaceNo = Number($spaceId) + n
-            $('#' + $newSpaceNo).append(this)
+            var $newSquare = $('#' + $newSpaceNo)
+            var $this = $(this)
+            $newSquare.append($this)
             n = 0
             counter = 0
             if($(this).parent().prop("class") == "square backward") {
@@ -53,8 +55,8 @@ var game = {
                 $(this).fadeOut(1000, function() {
                     //$(this).parent().addClass("gray")
                     $newSpaceNo -= 1
-                    $('#' + $newSpaceNo).append(this)
-                    $(this).fadeIn(1000)
+                    $('#' + $newSpaceNo).append($this)
+                    $this.fadeIn(1000)
                 })
             }
         }

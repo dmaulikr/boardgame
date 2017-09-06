@@ -31,6 +31,7 @@ h1 {
     border-radius: 25%;
     margin: 1px;
     float:left;
+    position: relative;
     /* overflow: hidden; */
     
     text-align: center;
@@ -40,7 +41,7 @@ h1 {
 }
 
 .backward {
-    background: pink;
+    background: #EAC3CA;
 }
 
 .gray {
@@ -78,3 +79,4 @@ img:hover {
 .roll {
     margin: 10px 25px;
 }
+
