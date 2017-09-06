@@ -59,6 +59,13 @@ var game = {
                     $this.fadeIn(1000)
                 })
             }
+            else if($(this).parent().prop("class") == "square forward"){
+                $(this).fadeOut(1000, function() {
+                    $newSpaceNo += 1
+                    $('#' + $newSpaceNo).append($this)
+                    $this.fadeIn(1000)
+                })
+            }
         }
     }
 }
