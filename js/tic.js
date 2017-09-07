@@ -12,9 +12,7 @@ var tic = {
         }
     ],
     $box: $('.box'),
-    $statusBar: $('.status-bar'),
-    //$p1: $('.p1'),
-    //$p2: $('.p2'),    
+    $statusBar: $('.status-bar'),   
     squaresFilled: 0,
 
     // Functions
@@ -85,11 +83,8 @@ var tic = {
         $('.modal-content').append('<button id="exit">Exit</button>')               // 1. show a button to exit the modal
         $('#exit').on('click', function(){                                          // 2. on click of the button
             $('#challengeModal').css({"display": "none"})                                     // change the display of the modal to 'none'
-            //$('.modal-question').css({"display": "none"})
             $('.modal-tic').css({"display": "none"})
-            // for(var i = 0; i <= 9; i += 1) {
-            //     tic.$box[i].innerText = ''
-            // }
+
             game.challengeBump()
 
         })

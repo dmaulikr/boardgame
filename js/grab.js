@@ -3,14 +3,6 @@ var grab = {
     $planet: $('.planet'),
     count: 0,
     timer: 5,
-    // $o1: $('#o1'),
-    // $o2: $('#o2'),
-    // $o3: $('#o3'),
-    // $o4: $('#o4'),
-    // $o5: $('#o5'),
-    // $o6: $('#o6'),
-    // $o7: $('#o7'),
-    // $o8: $('#o8'),
 
     reset: function() {
         grab.count = 0
@@ -27,14 +19,13 @@ var grab = {
             $('.modal-grab').css({"display": "none"})  
             game.grabBump()
             grab.reset()
+            $('#one-player').remove()
         })
     },
 
     playGame: function() {
         $(".go").on('click', function() {
             $('.field').append('<div id="o1" class="planet"></div><div id="o2" class="planet"></div><div id="o3" class="planet"></div><div id="o4" class="planet"></div><div id="o5" class="planet"></div><div id="o6" class="planet"></div><div id="o7" class="planet"></div><div id="o8" class="planet"></div>')
-            // $('.timer-bar').css({"display": "block"})
-            // $('.count-bar').css({"display": "block"})
             $('.go').css({"display": "none"})
             function fn(){
                 $('.time-bar').text("Time left: " + grab.timer + " seconds")
