@@ -148,9 +148,6 @@ var tic = {
             $('.box')[a].innerText !== '') {
                 return true
         }
-        else {
-            return false
-        }
     }, 
     checkWinner: function() {
         if(tic.checkLine(0,1,2) === true || 
@@ -161,29 +158,25 @@ var tic = {
             tic.checkLine(2,5,8) === true || 
             tic.checkLine(0,4,8) === true || 
             tic.checkLine(2,4,6) === true) {
-            //console.log("Winner")
-            
-            return true    
-        }
-        else {
-            return false
+                //console.log("Winner")
+                return true
         }
     },
-    whoWinner: function() {
-        if(tic.checkWinner() === true){
-            if(tic.currentPlayer === tic.player[0]) {
-                $('.status-bar').text(tic.currentPlayer.name + ", go forward 2 extra spaces!")
-                console.log('forward') 
-                //return "forward"
-            }
-            else if (tic.currentPlayer === tic.player[1]) {
-                $('.status-bar').text(tic.player[0].name + ", you've been bumped back two spaces")
-                console.log('back')
-                return "back"
-            }
-            console.log(tic.currentPlayer.name)
-        }
-    },
+    // whoWinner: function() {
+    //     if(tic.checkWinner() === true){
+    //         if(tic.currentPlayer === tic.player[0]) {
+    //             $('.status-bar').text(tic.currentPlayer.name + ", go forward 2 extra spaces!")
+    //             console.log('forward') 
+    //             return "forward"
+    //         }
+    //         else if (tic.currentPlayer === tic.player[1]) {
+    //             $('.status-bar').text(tic.player[0].name + ", you've been bumped back two spaces")
+    //             console.log('back')
+    //             return "back"
+    //         }
+    //         console.log(tic.currentPlayer.name)
+    //     }
+    // },
     switchPlayer: function() {
         if(tic.currentPlayer === tic.player[0]){
             tic.currentPlayer = tic.player[1]
@@ -216,35 +209,58 @@ var tic = {
     gameOver: function() {
         if(tic.isFull() === true || tic.checkWinner() === true){
             return true
-            
+            console.log('game ovs')
+        }
+        else {
+            return false
         }
     }, 
-    clickSquare: function() {
-        //console.log('clickSquare')
-        $('.box').on('click', function() {
-            //console.log("clicked on a square")
-            if($(this).text() === '' && tic.gameOver() !== true) {  
-                $(this).text(tic.currentPlayer.symbol)
-                if(tic.gameOver() !== true) {
+    finish: function() {
+        console.log('game over')
+        $('.modal-content').append('<button id="exit">Exit</button>')
+        $('#exit').on('click', function(){
+            $('#myModal').css({"display": "none"})
+        })
+        if(tic.noWinner() === true) {
+            console.log('draw')
+        }
+        else if(tic.checkWinner() === true){
+            console.log('yes winner')
+            tic.whoWinner()
+            //console.log('forward')
+        }
+        // else if(tic.whoWinner() === "back") {
+        //     console.log('back')
+        // }  
+    },
+    playGame: function() {
+        if(tic.gameOver() === false){
+            $('.box').on('click', function() {
+                if($(this).text() === ''){
+                    $(this).text(tic.currentPlayer.symbol)
                     tic.switchPlayer()
                     tic.squaresFilled +=1
+                    console.log(tic.gameOver())
                 }
-                if(tic.gameOver() === true) {
-                    $('.modal-content').append('<button id="exit">Exit</button>')
-                    $('#exit').on('click', function(){
-                        $('#myModal').css({"display": "none"})
-
-                        if(tic.checkWinner() === "forward") {
-
-                        }
-
-                    })
-
-                tic.noWinner()
-                }
-            }
-        })
+            })
+        }
+        else if (tic.gameOver() === true){
+            tic.finish()
+        }
     }
+//     clickSquare: function() {
+        
+//             if( && tic.gameOver() !== true) {  
+                
+//                 // if(tic.gameOver() !== true) {
+                    
+//                 // }
+//             }
+//             else if(tic.gameOver() === true) {
+//                 tic.finish()
+//             }
+//         })
+//     }
 }
 
 tic.currentPlayer = tic.player[0]
@@ -263,7 +279,29 @@ $('#two-player').on('click', function() {
     // add tic tac toe
     var $tictactoe = $('<h1>Tic Tac Toe Challenge</h1><div class="grid"><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div></div><div class="status-bar"></div>')
     $('.modal-content').append($tictactoe)
-    tic.clickSquare()
+    tic.playGame()
     $('.status-bar').text("It's " + tic.currentPlayer.name + "'s turn!")
     //console.log(tic.currentPlayer.name)
 })
+
+
+
+
+
+
+
+
+
+// if(tic.gameOver() === true) {
+//     $('.modal-content').append('<button id="exit">Exit</button>')
+//     $('#exit').on('click', function(){
+//         $('#myModal').css({"display": "none"})
+
+//         if(tic.checkWinner() === "forward") {
+
+//         }
+
+//     })
+
+// tic.noWinner()
+// }
