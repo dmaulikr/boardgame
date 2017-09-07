@@ -55,6 +55,10 @@ button {
     background: #B9B9D9;
 }
 
+.challenge {
+    background: #88B688
+}
+
 .start, .finish {
     background: #E0E0A1;
 }

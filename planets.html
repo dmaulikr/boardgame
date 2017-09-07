@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+    src="http://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        .planet{
+            width: 100px;
+            height: 100px;
+            background: blue;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="1" class="planet"></div>
+    <div id="2" class="planet"></div>
+    <div id="3" class="planet"></div>
+    <div id="4" class="planet"></div>
+    <div id="5" class="planet"></div>
+    <div id="6" class="planet"></div>
+    <div id="7" class="planet"></div>
+    <div id="8" class="planet"></div>
+    <div id="9" class="planet"></div>
+    
+    <script>
+
+        var $planet = $('.planet')
+        var count = 0
+
+        // $planet.forEach(setInterval(function(){
+        //     $('.planet').animate({
+        //     left: Math.random() * 500, 
+        //     top: Math.random() * 300,
+        //     }, 1000)
+        // }))
+
+
+    setInterval(function(){
+        $('#1').animate({
+        left: Math.random() * 500, 
+        top: Math.random() * 300,
+        }, 500)
+    })
+
+    setInterval(function(){
+        $('#2').animate({
+        left: Math.random() * 500, 
+        top: Math.random() * 300,
+        }, 810)
+    })
+
+    setInterval(function(){
+        $('#3').animate({
+        left: Math.random() * 500, 
+        top: Math.random() * 300,
+        }, 1000)
+    })
+
+    setInterval(function(){
+        $('#4').animate({
+        left: Math.random() * 500, 
+        top: Math.random() * 300,
+        }, 300)
+    })
+
+    setInterval(function(){
+        $('#5').animate({
+        left: Math.random() * 500, 
+        top: Math.random() * 300,
+        }, 350)
+    })
+
+    setInterval(function(){
+        $('#6').animate({
+        left: Math.random() * 500, 
+        top: Math.random() * 300,
+        }, 425)
+    })
+
+    setInterval(function(){
+        $('#7').animate({
+        left: Math.random() * 500, 
+        top: Math.random() * 300,
+        }, 450)
+    })
+
+    setInterval(function(){
+        $('#8').animate({
+        left: Math.random() * 500, 
+        top: Math.random() * 300,
+        }, 600)
+    })
+
+    setInterval(function(){
+        $('#9').animate({
+        left: Math.random() * 500, 
+        top: Math.random() * 300,
+        }, 700)
+    })
+
+    $planet.on('click', function() {
+        count += 1
+        $(this).remove()
+    })
+
+
+
+
+
+
+    </script>
+</body>
+</html>

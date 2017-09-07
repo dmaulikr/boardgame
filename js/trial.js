@@ -104,14 +104,7 @@ var game = {
     challenge: function($piece) {
         if($piece.parent().prop("class") == "square challenge") {
             console.log('challenge')
-            $('#myModal').css({"display": "block"})
-            // var $onePlayer = $('<button id="one-player">One Player</button>')
-            // var $twoPlayer = $('<button id="two-player">Two Player</button>')
-            // var $ques = $('<p>Do you want a one- or two-player challenge?</p>')
-            // $('.modal-content').append($ques, $onePlayer, $twoPlayer)
-            // $('.close').on('click', function() {
-            //     $('#myModal').css({"display": "none"})
-            // })
+            $('#challengeModal').css({"display": "block"})
         }
     },
     checkWinner: function(target) {
@@ -250,7 +243,7 @@ var tic = {
     gameOver: function() {                                                        // FINISH THE GAME
         $('.modal-content').append('<button id="exit">Exit</button>')               // 1. show a button to exit the modal
         $('#exit').on('click', function(){                                          // 2. on click of the button
-            $('#myModal').css({"display": "none"})                                      // change the display of the modal to 'none'
+            $('#challengeModal').css({"display": "none"})                                      // change the display of the modal to 'none'
             game.challengeBump()
         })
         if(tic.draw() === true) {                                                   // 3. if the game was a draw
@@ -288,7 +281,7 @@ var x = undefined
 
 $('#one-player').on('click', function() {
     $('.modal-paragraph').remove()
-    // Add whack a mole
+    // click to catch
 
 })
 
@@ -301,25 +294,3 @@ $('#two-player').on('click', function() {
     $('.status-bar').text("It's " + tic.currentPlayer.name + "'s turn!")
     //console.log(tic.currentPlayer.name)
 })
-
-
-
-
-
-
-
-
-
-// if(tic.gameOver() === true) {
-//     $('.modal-content').append('<button id="exit">Exit</button>')
-//     $('#exit').on('click', function(){
-//         $('#myModal').css({"display": "none"})
-
-//         if(tic.checkWinner() === "forward") {
-
-//         }
-
-//     })
-
-// tic.draw()
-// }
