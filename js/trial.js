@@ -103,6 +103,31 @@
                 })
             }
         },
+        grabBump: function() {
+            var cPiece = undefined
+            if(game.currentPlayer.iden == 'piece-1') {
+                cPiece = game.player[1].icon
+                var $curSqNu = Number($("#piece-2").parent().prop("id"))
+                var $newSqNum = $curSqNu + grab.count
+                var $newSq = $("#" + $newSqNum)
+
+                $("#piece-2").fadeOut(1000,function() {
+                    $newSq.append($("#piece-2"))
+                    $('#piece-2').fadeIn(1000)
+                })
+            }
+            else if(game.currentPlayer.iden == 'piece-2') {
+                cPiece = game.player[0].icon
+                var $curSqNu = Number($("#piece-1").parent().prop("id"))
+                var $newSqNum = $curSqNu + grab.count
+                var $newSq = $("#" + $newSqNum)
+
+                $("#piece-1").fadeOut(1000,function() {
+                    $newSq.append($("#piece-1"))
+                    $('#piece-1').fadeIn(1000)
+                })
+            }
+        },
         challenge: function($piece) {
             if($piece.parent().prop("class") == "square challenge") {
                 console.log('challenge')
@@ -283,92 +308,107 @@
     var grab = {
         $planet: $('.planet'),
         count: 0,
-        $o1: $('#o1'),
-        $o2: $('#o2'),
-        $o3: $('#o3'),
-        $o4: $('#o4'),
-        $o5: $('#o5'),
-        $o6: $('#o6'),
-        $o7: $('#o7'),
-        $o8: $('#o8'),
+        timer: 5,
+        // $o1: $('#o1'),
+        // $o2: $('#o2'),
+        // $o3: $('#o3'),
+        // $o4: $('#o4'),
+        // $o5: $('#o5'),
+        // $o6: $('#o6'),
+        // $o7: $('#o7'),
+        // $o8: $('#o8'),
 
-        spacey: function(obj) {
-            obj.animate({
-                left: Math.random() * 1000, 
-                top: Math.random() * 600,
+        gameOver: function() {                                                        // FINISH THE GAME
+            $('.modal-content').append('<button id="exit">Exit</button>')               // 1. show a button to exit the modal
+            $('#exit').on('click', function(){                                          // 2. on click of the button
+                $('#challengeModal').css({"display": "none"})                                      // change the display of the modal to 'none'
+                game.grabBump()
             })
         },
 
         playGame: function() {
             $(".go").on('click', function() {
-                $('.field').append('<div id="o1" class="planet"></div><div id="o2" class="planet"></div><div id="o3" class="planet"></div><div id="o4" class="planet"></div><div id="o5" class="planet"></div><div id="o6" class="planet"></div><div id="o7" class="planet"></div><div id="o8" class="planet"></div>')
-                
+                $('.field').append('<div id="o1" class="planet"></div><div id="o2" class="planet"></div><div id="o3" class="planet"></div><div id="o4" class="planet"></div><div id="o5" class="planet"></div><div id="o6" class="planet"></div><div id="o7" class="planet"></div><div id="o8" class="planet"></div><div class="time-bar">Time left: 6 seconds</div><div class="count-bar"</div>')
+                $('.go').remove()
+                function fn(){
+                    $('.time-bar').text("Time left: " + grab.timer + " seconds")
+                    grab.timer = grab.timer - 1
+                    if (grab.timer < 0){
+                        clearInterval(timerInterval)
+                        $('.planet').remove()
+                        grab.gameOver()
+                        }
+                    }
+                var timerInterval = setInterval(fn, 1000)
+
                 setInterval(function(){
                     $('#o1').animate({
-                    left: Math.random() * 1000, 
-                    top: Math.random() * 600,
-                    }, 500)
-                })
-            
-                setInterval(function(){
-                    $('#o2').animate({
-                    left: Math.random() * 1000, 
-                    top: Math.random() * 600,
-                    }, 810)
-                })
-            
-                setInterval(function(){
-                    $('#o3').animate({
-                    left: Math.random() * 1000, 
+                    left: Math.random() * 600, 
                     top: Math.random() * 600,
                     }, 1000)
                 })
             
                 setInterval(function(){
-                    $('#o4').animate({
-                    left: Math.random() * 1000, 
+                    $('#o2').animate({
+                    left: Math.random() * 600, 
                     top: Math.random() * 600,
-                    }, 300)
+                    }, 950)
+                })
+            
+                setInterval(function(){
+                    $('#o3').animate({
+                    left: Math.random() * 600, 
+                    top: Math.random() * 600,
+                    }, 900)
+                })
+            
+                setInterval(function(){
+                    $('#o4').animate({
+                    left: Math.random() * 600, 
+                    top: Math.random() * 600,
+                    }, 850)
                 })
             
                 setInterval(function(){
                     $('#o5').animate({
-                    left: Math.random() * 1000, 
+                    left: Math.random() * 600, 
                     top: Math.random() * 600,
-                    }, 350)
+                    }, 800)
                 })
             
                 setInterval(function(){
                     $('#o6').animate({
-                    left: Math.random() * 1000, 
+                    left: Math.random() * 600, 
                     top: Math.random() * 600,
-                    }, 425)
+                    }, 750)
                 })
             
                 setInterval(function(){
                     $('#o7').animate({
-                    left: Math.random() * 1000, 
-                    top: Math.random() * 600,
-                    }, 450)
-                })
-            
-                setInterval(function(){
-                    $('#o8').animate({
-                    left: Math.random() * 1000, 
-                    top: Math.random() * 600,
-                    }, 600)
-                })
-            
-                setInterval(function(){
-                    $('#o9').animate({
-                    left: Math.random() * 1000, 
+                    left: Math.random() * 600, 
                     top: Math.random() * 600,
                     }, 700)
                 })
             
+                setInterval(function(){
+                    $('#o8').animate({
+                    left: Math.random() * 600, 
+                    top: Math.random() * 600,
+                    }, 650)
+                })
+            
+                setInterval(function(){
+                    $('#o9').animate({
+                    left: Math.random() * 600, 
+                    top: Math.random() * 600,
+                    }, 600)
+                })
+            
                 $(".planet").on('click', function() {
                     grab.count += 1
+                    console.log('grab count' + grab.count)
                     $(this).remove()
+                    $('.count-bar').text("You've caught " + grab.count + " pieces!")
                 })
             })
             

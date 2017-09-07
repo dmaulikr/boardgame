@@ -1,10 +1,8 @@
 .field{ 
 
     width: 100%;
-    min-width: 500px;
-    height: 725px;
-    border: 1px solid black;
-    margin: 15px auto;
+    height: 500px;
+
 }
 
 .planet {
