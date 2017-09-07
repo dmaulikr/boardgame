@@ -12,22 +12,34 @@ var grab = {
     // $o7: $('#o7'),
     // $o8: $('#o8'),
 
+    reset: function() {
+        grab.count = 0
+        $('.count-bar').text("")
+        grab.timer = 5
+        $('.time-bar').text("Time left: " + grab.timer + " seconds")
+        $('.planet'). remove()
+        $('#exitG').remove()
+    },
     gameOver: function() {                                                        // FINISH THE GAME
-        $('.modal-content').append('<button id="exit">Exit</button>')               // 1. show a button to exit the modal
-        $('#exit').on('click', function(){                                          // 2. on click of the button
+        $('.modal-grab').append('<button id="exitG">Exit</button>')               // 1. show a button to exit the modal
+        $('#exitG').on('click', function(){                                          // 2. on click of the button
             $('#challengeModal').css({"display": "none"})                                      // change the display of the modal to 'none'
+            $('.modal-grab').css({"display": "none"})  
             game.grabBump()
+            grab.reset()
         })
     },
 
     playGame: function() {
         $(".go").on('click', function() {
-            $('.field').append('<div id="o1" class="planet"></div><div id="o2" class="planet"></div><div id="o3" class="planet"></div><div id="o4" class="planet"></div><div id="o5" class="planet"></div><div id="o6" class="planet"></div><div id="o7" class="planet"></div><div id="o8" class="planet"></div><div class="time-bar">Time left: 6 seconds</div><div class="count-bar"</div>')
-            $('.go').remove()
+            $('.field').append('<div id="o1" class="planet"></div><div id="o2" class="planet"></div><div id="o3" class="planet"></div><div id="o4" class="planet"></div><div id="o5" class="planet"></div><div id="o6" class="planet"></div><div id="o7" class="planet"></div><div id="o8" class="planet"></div>')
+            // $('.timer-bar').css({"display": "block"})
+            // $('.count-bar').css({"display": "block"})
+            $('.go').css({"display": "none"})
             function fn(){
                 $('.time-bar').text("Time left: " + grab.timer + " seconds")
                 grab.timer = grab.timer - 1
-                if (grab.timer < 0){
+                if (grab.timer <= 0){ 
                     clearInterval(timerInterval)
                     $('.planet').remove()
                     grab.gameOver()

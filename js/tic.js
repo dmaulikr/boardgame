@@ -3,11 +3,11 @@
 var tic = {
     player: [
         {
-            name: game.currentPlayer.name,
+            name: "Defender",
             symbol: "X"
         },
         {
-            name: "name",
+            name: "Challenger",
             symbol: "O"
         }
     ],
@@ -18,6 +18,15 @@ var tic = {
     squaresFilled: 0,
 
     // Functions
+    getName: function() {
+        if(game.currentPlayer === game.player[0]){
+            tic.player[1].name = game.player[1].name
+        }
+        else if(game.currentPlayer === game.player[1]){
+            tic.player[1].name = game.player[0].name
+        }
+        return tic.player[1].name
+    },
     checkLine: function(a,b,c) {                                                // CHECK IF ANY LINE HAS MATCHING SYMBOLS
         if ($('.box')[a].innerText === $('.box')[b].innerText &&                    // if the inner text of box A is equal to the inner text of box B 
             $('.box')[a].innerText === $('.box')[c].innerText &&                    // AND the inner text of box A is equal to the inner text of box C
@@ -75,8 +84,14 @@ var tic = {
     gameOver: function() {                                                        // FINISH THE GAME
         $('.modal-content').append('<button id="exit">Exit</button>')               // 1. show a button to exit the modal
         $('#exit').on('click', function(){                                          // 2. on click of the button
-            $('#challengeModal').css({"display": "none"})                                      // change the display of the modal to 'none'
+            $('#challengeModal').css({"display": "none"})                                     // change the display of the modal to 'none'
+            //$('.modal-question').css({"display": "none"})
+            $('.modal-tic').css({"display": "none"})
+            // for(var i = 0; i <= 9; i += 1) {
+            //     tic.$box[i].innerText = ''
+            // }
             game.challengeBump()
+
         })
         if(tic.draw() === true) {                                                   // 3. if the game was a draw
             console.log('draw')                                                         // console log 'draw
@@ -107,3 +122,4 @@ var tic = {
 
 tic.currentPlayer = tic.player[0]
 var x = undefined
+tic.player[1].name = tic.getName()

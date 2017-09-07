@@ -134,6 +134,18 @@ img:hover {
     height: 800px;
 }
 
+.modal-question { 
+    display: none;
+}
+
+.modal-tic {
+    display: none;
+}
+
+.modal-grab {
+    display: none;
+}
+
 .modal-paragraph {
     height: 15px;
     float: left;

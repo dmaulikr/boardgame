@@ -4,12 +4,12 @@ var game = {
     // Variables
     player: [
         {
-            name: "Player 1",
+            name: undefined,
             icon: '<img id="piece-1" class="piece" src="https://lh3.googleusercontent.com/ez8pDFoxU2ZqDmyfeIjIba6dWisd8MY_6choHhZNpO0WwLhICu0v0s5eV2WHOhuhKw=w170">',
             iden: "piece-1"
         },
         {
-            name: "Player 2",
+            name: undefined,
             icon: '<img id="piece-2" class="piece" src="https://clipartion.com/wp-content/uploads/2015/10/penguin-clip-art-for-kids-free-clipart-images-1024x1024.png">',
             iden: "piece-2"
         }
@@ -66,6 +66,7 @@ var game = {
                 $newSq.append($("#piece-2"))
                 $('#piece-2').fadeIn(1000)
             })
+            
         }
         else if(x < 0 && game.currentPlayer.iden == 'piece-2') {
             console.log('move!')
@@ -131,7 +132,12 @@ var game = {
     challenge: function($piece) {
         if($piece.parent().prop("class") == "square challenge") {
             console.log('challenge')
+            $('.modal-content').css({"display": "block"})
+            $('.modal-question').css({"display": "block"})
             $('#challengeModal').css({"display": "block"})
+            $('modal-tic').css({"display": "none"})
+            
+            //$('.modal-content').append($challengeQuestion)
         }
     },
     checkWinner: function(target) {
