@@ -57,7 +57,7 @@ var game = {
         if(x < 0 && game.currentPlayer.iden == 'piece-1') {
             cPiece = game.player[1].icon
             var $curSqNu = Number($("#piece-2").parent().prop("id"))
-            var $newSqNum = $curSqNu + 6
+            var $newSqNum = $curSqNu - 5
             var $newSq = $("#" + $newSqNum)
 
             $("#piece-2").fadeOut(1000,function() {
@@ -69,7 +69,7 @@ var game = {
             console.log('move!')
             cPiece = game.player[0].icon
             var $curSqNu = Number($("#piece-1").parent().prop("id"))
-            var $newSqNum = $curSqNu + 6
+            var $newSqNum = $curSqNu - 5
             var $newSq = $("#" + $newSqNum)
 
             $("#piece-1").fadeOut(1000,function() {
@@ -225,7 +225,7 @@ var tic = {
                 x = 6
             }
             else if (tic.currentPlayer === tic.player[1]) {                             // but if the current player (thus the winner) is player 2
-                $('.status-bar').text(tic.player[0].name + ", you've been bumped back 6 spaces")  // update the status bar to show that player 2 won
+                $('.status-bar').text(tic.player[0].name + ", you've been bumped back 5 spaces")  // update the status bar to show that player 2 won
                 x = -6
             }
             console.log(tic.currentPlayer.name)                                         // and console log the current player's name
