@@ -52,6 +52,55 @@ var game = {
             })
         }
     },
+    challengeBump: function() {
+        var cPiece = undefined
+        if(x < 0 && game.currentPlayer.iden == 'piece-1') {
+            cPiece = game.player[1].icon
+            var $curSqNu = Number($("#piece-2").parent().prop("id"))
+            var $newSqNum = $curSqNu + 6
+            var $newSq = $("#" + $newSqNum)
+
+            $("#piece-2").fadeOut(1000,function() {
+                $newSq.append($("#piece-2"))
+                $('#piece-2').fadeIn(1000)
+            })
+        }
+        else if(x < 0 && game.currentPlayer.iden == 'piece-2') {
+            console.log('move!')
+            cPiece = game.player[0].icon
+            var $curSqNu = Number($("#piece-1").parent().prop("id"))
+            var $newSqNum = $curSqNu + 6
+            var $newSq = $("#" + $newSqNum)
+
+            $("#piece-1").fadeOut(1000,function() {
+                $newSq.append($("#piece-1"))
+                $('#piece-1').fadeIn(1000)
+            })
+        }
+        else if(x > 0 && game.currentPlayer.iden == 'piece-1') {
+            cPiece = game.player[1].icon
+            var $curSqNu = Number($("#piece-2").parent().prop("id"))
+            var $newSqNum = $curSqNu + 6
+            var $newSq = $("#" + $newSqNum)
+
+            $("#piece-2").fadeOut(1000,function() {
+                $newSq.append($("#piece-2"))
+                $('#piece-2').fadeIn(1000)
+            })
+        }
+        else if(x > 0 && game.currentPlayer.iden == 'piece-2') {
+            console.log('move!')
+            cPiece = game.player[0].icon
+            var $curSqNu = Number($("#piece-1").parent().prop("id"))
+            var $newSqNum = $curSqNu + 6
+            var $newSq = $("#" + $newSqNum)
+
+            $("#piece-1").fadeOut(1000,function() {
+                $newSq.append($("#piece-1"))
+                $('#piece-1').fadeIn(1000)
+            })
+        }
+    },
     challenge: function($piece) {
         if($piece.parent().prop("class") == "square challenge") {
             console.log('challenge')
@@ -60,9 +109,9 @@ var game = {
             // var $twoPlayer = $('<button id="two-player">Two Player</button>')
             // var $ques = $('<p>Do you want a one- or two-player challenge?</p>')
             // $('.modal-content').append($ques, $onePlayer, $twoPlayer)
-            $('.close').on('click', function() {
-                $('#myModal').css({"display": "none"})
-            })
+            // $('.close').on('click', function() {
+            //     $('#myModal').css({"display": "none"})
+            // })
         }
     },
     checkWinner: function(target) {
@@ -172,12 +221,12 @@ var tic = {
     whoWinner: function() {                                                     // FIND OUT WHO THE WINNER IS
         if(tic.checkWinner() === true){                                             // if someone has won the game
             if(tic.currentPlayer === tic.player[0]) {                                   // and if the current player (thus the winner) is player 1
-                $('.status-bar').text(tic.currentPlayer.name + ", go forward 2 extra spaces!")  // update the status bar to show that player 1 won
-                return "forward"                                                                // and return 'forward
+                $('.status-bar').text(tic.currentPlayer.name + ", go forward 6 extra spaces!")  // update the status bar to show that player 1 won
+                x = 6
             }
             else if (tic.currentPlayer === tic.player[1]) {                             // but if the current player (thus the winner) is player 2
-                $('.status-bar').text(tic.player[0].name + ", you've been bumped back two spaces")  // update the status bar to show that player 2 won
-                return "back"                                                                       // return 'back
+                $('.status-bar').text(tic.player[0].name + ", you've been bumped back 6 spaces")  // update the status bar to show that player 2 won
+                x = -6
             }
             console.log(tic.currentPlayer.name)                                         // and console log the current player's name
         }
@@ -202,6 +251,7 @@ var tic = {
         $('.modal-content').append('<button id="exit">Exit</button>')               // 1. show a button to exit the modal
         $('#exit').on('click', function(){                                          // 2. on click of the button
             $('#myModal').css({"display": "none"})                                      // change the display of the modal to 'none'
+            game.challengeBump()
         })
         if(tic.draw() === true) {                                                   // 3. if the game was a draw
             console.log('draw')                                                         // console log 'draw
@@ -231,6 +281,7 @@ var tic = {
 }
 
 tic.currentPlayer = tic.player[0]
+var x = undefined
 
 
 
