@@ -109,7 +109,7 @@ img:hover {
 }
 
 .modal {
-    display: none;
+    /* display: none; */
     position: fixed;
     z-index: 1; 
     left: 0;
@@ -123,8 +123,19 @@ img:hover {
 
 .modal-content {
     background-color: #FEFEFE;
-    margin: 15% align-self;
+    margin: 15px auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    height: 800px;
+}
+
+.modal-paragraph {
+    height: 15px;
+    float: left;
+}
+
+.one-player, .two-player {
+    clear:both;
+    display: block;
 }
