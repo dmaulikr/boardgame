@@ -4,11 +4,11 @@ var tic = {
     player: [
         {
             name: "Player",
-            symbol: '<img id="hole" src="file:///Users/katiegoines/WDI_51/W03/project_01_game/images/hole.png">'
+            symbol: '<img id="hole" src="https://github.com/katiegoines/boardgame/blob/master/images/hole.png">'
         },
         {
             name: "Challenger",
-            symbol: '<img id="asteroid" src="https://pbs.twimg.com/profile_images/3627005607/2aae0e25c02fe03e8b22437d69d6802c_400x400.png">'
+            symbol: '<img id="asteroid" src="https://github.com/katiegoines/boardgame/blob/master/images/asteroid2.png">'
         }
     ],
     $box: $('.box'),
@@ -24,7 +24,7 @@ var tic = {
             var $curSqNu = Number($("#piece-2").parent().prop("id"))
             var $newSqNum = $curSqNu - 5
             var $newSq = $("#" + $newSqNum)
-            var challengeBackSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/lasergun.wav')
+            var challengeBackSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/lasergun.wav')
             challengeBackSound.play()
             $("#piece-2").fadeOut(1000,function() {
                 $newSq.append($("#piece-2"))
@@ -37,7 +37,7 @@ var tic = {
             var $curSqNu = Number($("#piece-1").parent().prop("id"))
             var $newSqNum = $curSqNu - 5
             var $newSq = $("#" + $newSqNum)
-            var challengeBackSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/lasergun.wav')
+            var challengeBackSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/lasergun.wav')
             challengeBackSound.play()
             $("#piece-1").fadeOut(1000,function() {
                 $newSq.append($("#piece-1"))
@@ -49,7 +49,7 @@ var tic = {
             var $curSqNu = Number($("#piece-2").parent().prop("id"))
             var $newSqNum = $curSqNu + 6
             var $newSq = $("#" + $newSqNum)
-            var challengeForwardSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/powerup2.wav')
+            var challengeForwardSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/powerup2.wav')
             challengeForwardSound.play()
             $("#piece-2").fadeOut(1000,function() {
                 $newSq.append($("#piece-2"))
@@ -62,7 +62,7 @@ var tic = {
             var $curSqNu = Number($("#piece-1").parent().prop("id"))
             var $newSqNum = $curSqNu + 6
             var $newSq = $("#" + $newSqNum)
-            var challengeForwardSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/powerup2.wav')
+            var challengeForwardSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/powerup2.wav')
             challengeForwardSound.play()
             $("#piece-1").fadeOut(1000,function() {
                 $newSq.append($("#piece-1"))
@@ -147,11 +147,11 @@ var tic = {
                 if($(this).text() === ''){
                     $(this).html(tic.currentPlayer.symbol)
                     if(tic.currentPlayer === tic.player[0]){
-                        var blastSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/balloon.wav')
+                        var blastSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/balloon.wav')
                         blastSound.play()
                     }
                     else if (tic.currentPlayer === tic.player[1]){
-                        var thudSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/thud.wav')
+                        var thudSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/thud.wav')
                         thudSound.play()
                     }
                     if(tic.checkWinner() !== true && tic.isFull !== true) {
