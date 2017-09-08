@@ -24,10 +24,12 @@
 
 #hole {
     width: 100%;
+    z-index: 1;
 }
 
 #asteroid {
     width: 100%;
+    z-index: 2;
 }
 
 .status-bar {
