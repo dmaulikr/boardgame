@@ -41,6 +41,8 @@ The tic-tac-toe board and the catching challenge code needs to be refactored. Th
 
 When a player lands on a "challenge" space, the intention was to allow them to choose whether they want to play a one- or two-player game. I broke the code, though, and neither supplementary game is resetting correctly after the first time it's played. Until this can be figured out, this has been detoured around and commented out.
 
+When the challenge has already been played. I want there to be a message saying that the player doesn't have to do the challenge since it's been done. It's not working, so it's commented out.
+
 ### Future Work
 -- 
 As a player, I want additional challenge games for more excitement.
