@@ -4,12 +4,12 @@ var game = {
     player: [
         {
             name: undefined,
-            icon: '<img id="piece-1" class="piece" src="https://i.imgur.com/ltPMH4C.png">',
+            icon: '<img id="piece-1" class="piece" src="/boardgame/images/spaceship-yellow-sm.png">',
             iden: "piece-1"
         },
         {
             name: undefined,
-            icon: '<img id="piece-2" class="piece" src="https://i.imgur.com/xV6CD8u.png">',
+            icon: '<img id="piece-2" class="piece" src="/boardgame/images/spaceship-green-sm.png">',
             iden: "piece-2"
         }
     ],
@@ -38,8 +38,8 @@ var game = {
     },
     bump: function($piece, targetNum) {
         if($piece.parent().prop("class") == "square backward") {
-            // var bumpBackSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/laser.wav')
-            // bumpBackSound.play()
+            var bumpBackSound = new Audio('/boardgame/sounds/laser.wav')
+            bumpBackSound.play()
             $piece.fadeOut(400, function() {
                 targetNum -= 1
                 $('#' + targetNum).append($piece)
@@ -47,8 +47,8 @@ var game = {
             })
         }
         else if($piece.parent().prop("class") == "square forward") {
-            // var bumpForwardSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/powerup.wav')
-            // bumpForwardSound.play()
+            var bumpForwardSound = new Audio('/boardgame/sounds/powerup.wav')
+            bumpForwardSound.play()
             $piece.fadeOut(800, function() {
                 targetNum += 1
                 $('#' + targetNum).append($piece)
@@ -58,8 +58,8 @@ var game = {
     },
     challenge: function($piece) {
         if($piece.parent().prop("class") == "square challenge-one") {
-            // var challengeStartSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/explosionultrabass.wav')
-            // challengeStartSound.play()
+            var challengeStartSound = new Audio('/boardgame/sounds/explosionultrabass.wav')
+            challengeStartSound.play()
             console.log('challenge')
             $('.modal-content').css({"display": "block"})
             $('.modal-grab').css({"display": "block"})
@@ -68,8 +68,8 @@ var game = {
             // $('modal-tic').css({"display": "none"})
         }
         else if ($piece.parent().prop("class") == "square challenge-two") {
-            // var challengeStartSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/explosionultrabass.wav')
-            // challengeStartSound.play()
+            var challengeStartSound = new Audio('/boardgame/sounds/explosionultrabass.wav')
+            challengeStartSound.play()
             console.log('challenge')
             $('.modal-content').css({"display": "block"})
             $('.modal-tic').css({"display": "block"})
@@ -91,8 +91,8 @@ var game = {
             var $currentSquareNum = Number($(this).parent().prop("id"))
             var newSquareNum = $currentSquareNum + n
             var $newSquare = $('#' + newSquareNum)
-            // var regMoveSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/laserblast.wav')
-            // regMoveSound.play()
+            var regMoveSound = new Audio('/boardgame/sounds/laserblast.wav')
+            regMoveSound.play()
             $(this).fadeOut(500, function() {
                 $newSquare.append($(this))
                 $(this).fadeIn(500, function() {
@@ -107,8 +107,8 @@ var game = {
     },
     roll: function() {
         if(game.rollClear === 0) {                                                                                                          // If the variable rollClear has a value of 0
-            // var diceSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/dice.wav')
-            // diceSound.play()                                                                                                                    // 1. Play the sound identified in the line above
+            var diceSound = new Audio('/boardgame/sounds/dice.wav')
+            diceSound.play()                                                                                                                    // 1. Play the sound identified in the line above
             n = Math.ceil(Math.random() * 6)                                                                                                    // 2. Set the variable n to a random number between 0 and 6 (rounded up)
             $('.dice-num').text("You rolled a " + n)                                                                                            // 3. Show what was rolled on the screen
             game.rollClear += 1                                                                                                                 // 4. And add 1 to the current value of rollClear, so that the roll button can't be clicked again until the current player has moved their piece
