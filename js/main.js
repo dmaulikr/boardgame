@@ -4,12 +4,12 @@ var game = {
     player: [
         {
             name: undefined,
-            icon: '<img id="piece-1" class="piece" src="/boardgame/images/spaceship-yellow-sm.png">',
+            icon: '<img id="piece-1" class="piece" src="images/spaceship-yellow-sm.png">',
             iden: "piece-1"
         },
         {
             name: undefined,
-            icon: '<img id="piece-2" class="piece" src="/boardgame/images/spaceship-green-sm.png">',
+            icon: '<img id="piece-2" class="piece" src="images/spaceship-green-sm.png">',
             iden: "piece-2"
         }
     ],
@@ -37,7 +37,7 @@ var game = {
     },
     bump: function($piece, targetNum) {                                                                                                 // BUMP PIECE FORWRD OR BACK
         if($piece.parent().prop("class") == "square backward") {                                                                            // If the piece lands on a backward square
-            var bumpBackSound = new Audio('/boardgame/sounds/laser.wav')                                                                        // 1. Create a variable whose value is a new sound
+            var bumpBackSound = new Audio('sounds/laser.wav')                                                                                   // 1. Create a variable whose value is a new sound
             bumpBackSound.play()                                                                                                                // 2. Play that sound
             $piece.fadeOut(400, function() {                                                                                                    // 3. Fade that piece out
                 targetNum -= 1                                                                                                                      // Then decrease the newSquareNum by one
@@ -46,7 +46,7 @@ var game = {
             })
         }
         else if($piece.parent().prop("class") == "square forward") {                                                                        // But if the piece lands on a forward square
-            var bumpForwardSound = new Audio('/boardgame/sounds/powerup.wav')                                                                   // 1. Create a variable whose value is a new sound
+            var bumpForwardSound = new Audio('sounds/powerup.wav')                                                                              // 1. Create a variable whose value is a new sound
             bumpForwardSound.play()                                                                                                             // 2. Play that sound
             $piece.fadeOut(800, function() {                                                                                                    // 3. Fade the piece out
                 targetNum += 1                                                                                                                      // Then increase the newSquareNum by one
@@ -57,7 +57,7 @@ var game = {
     },
     challenge: function($piece) {                                                                                                       // RUN A CHALLENGE
         if($piece.parent().prop("class") == "square challenge-one") {                                                                       // If the piece lands on is a challenge-one square
-            var challengeStartSound = new Audio('/boardgame/sounds/explosionultrabass.wav')                                                     // 1. Create a variable whose value is a new sound
+            var challengeStartSound = new Audio('sounds/explosionultrabass.wav')                                                                // 1. Create a variable whose value is a new sound
             challengeStartSound.play()                                                                                                          // 2. Play that sound
             $('.modal-content').css({"display": "block"})                                                                                       // 3. Show the modal-content div
             $('.modal-grab').css({"display": "block"})                                                                                          // 4. Show the modal-grab div
@@ -66,7 +66,7 @@ var game = {
             // $('modal-tic').css({"display": "none"})
         }
         else if ($piece.parent().prop("class") == "square challenge-two") {                                                                 // If the piece lands on a challenge-two square
-            var challengeStartSound = new Audio('/boardgame/sounds/explosionultrabass.wav')                                                     // 1. Create a variable whose value is a new sound
+            var challengeStartSound = new Audio('sounds/explosionultrabass.wav')                                                                // 1. Create a variable whose value is a new sound
             challengeStartSound.play()                                                                                                          // 2. Play that sound
             $('.modal-content').css({"display": "block"})                                                                                       // 3. Show the modal-content div
             $('.modal-tic').css({"display": "block"})                                                                                           // 4. Show the modal-grab div
@@ -88,7 +88,7 @@ var game = {
             var $currentSquareNum = Number($(this).parent().prop("id"))                                                                         // 1. Create a variable ($currentSqareNum) whose value is the id of the parent element of the piece
             var newSquareNum = $currentSquareNum + n                                                                                            // 2. Create a variable (newSquareNum) whose value is the number of the current square (id number) plus the number rolled
             var $newSquare = $('#' + newSquareNum)                                                                                              // 3. Create a variable ($newSquare) whose value is the id of the space the piece is to move to
-            var regMoveSound = new Audio('/boardgame/sounds/laserblast.wav')                                                                    // 4. Create a variable whose value is a new sound
+            var regMoveSound = new Audio('sounds/laserblast.wav')                                                                               // 4. Create a variable whose value is a new sound
             regMoveSound.play()                                                                                                                 // 5. Play that sound
             $(this).fadeOut(500, function() {                                                                                                   // 6. Fade out the piece clicked on
                 $newSquare.append($(this))                                                                                                          // Then, append the piece to the new square
@@ -104,7 +104,7 @@ var game = {
     },
     roll: function() {                                                                                                                  // ROLL THE DICE
         if(game.rollClear === 0) {                                                                                                          // If the variable rollClear has a value of 0
-            var diceSound = new Audio('/boardgame/sounds/dice.wav')                                                                             // 1. Create a variable whose value is a new sound
+            var diceSound = new Audio('sounds/dice.wav')                                                                                        // 1. Create a variable whose value is a new sound
             diceSound.play()                                                                                                                    // 2. Play that sound
             n = Math.ceil(Math.random() * 6)                                                                                                    // 3. Set the variable n to a random number between 0 and 6 (rounded up)
             $('.dice-num').text("You rolled a " + n)                                                                                            // 4. Show what was rolled on the screen
@@ -121,7 +121,7 @@ var n = undefined                                                               
 
 $('form').on('submit', function(evnt) {                                                                                                     // When a form is submitted,
     evnt.preventDefault()                                                                                                                       // 1. Prevent the default actions (refreshing the page)
-    var startSound = new Audio('sounds/comet.wav')                                                                                   // 2. Create a variable whose value is a new sound
+    var startSound = new Audio('sounds/comet.wav')                                                                                              // 2. Create a variable whose value is a new sound
     startSound.play()                                                                                                                           // 3. Play that sound
     game.player[0].name = $('#p1-name').val() || "Player 1"                                                                                     // 4. Set the name of player 1 to the value of the first input box, or if it was left empty, to Player 1
     game.player[1].name = $('#p2-name').val() || "Player 2"                                                                                     // 5. Set the name of player 2 to the value of the second input box, or if it was left empty, to Player 2

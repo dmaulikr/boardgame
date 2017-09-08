@@ -11,7 +11,7 @@ var grab = {
             var $curSqNu = Number($("#piece-2").parent().prop("id"))
             var $newSqNum = $curSqNu + grab.count
             var $newSq = $("#" + $newSqNum)
-            var challengeForwardSound = new Audio('/boardgame/sounds/powerup2.wav')
+            var challengeForwardSound = new Audio('sounds/powerup2.wav')
             challengeForwardSound.play()
             $("#piece-2").fadeOut(1000,function() {
                 $newSq.append($("#piece-2"))
@@ -23,7 +23,7 @@ var grab = {
             var $curSqNu = Number($("#piece-1").parent().prop("id"))
             var $newSqNum = $curSqNu + grab.count
             var $newSq = $("#" + $newSqNum)
-            var challengeForwardSound = new Audio('/boardgame/sounds/powerup2.wav')
+            var challengeForwardSound = new Audio('sounds/powerup2.wav')
             challengeForwardSound.play()
             $("#piece-1").fadeOut(1000,function() {
                 $newSq.append($("#piece-1"))
@@ -123,7 +123,7 @@ var grab = {
                 grab.count += 1
                 console.log('grab count' + grab.count)
                 $(this).remove()
-                var catchSound = new Audio('/boardgame/sounds/fryingpan.wav')
+                var catchSound = new Audio('sounds/fryingpan.wav')
                 catchSound.play()
                 $('.count-bar').text("You've caught " + grab.count + " pieces!")
             })

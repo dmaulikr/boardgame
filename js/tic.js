@@ -4,11 +4,11 @@ var tic = {
     player: [
         {
             name: "Player",
-            symbol: '<img id="hole" src="/boardgame/images/hole.png">'
+            symbol: '<img id="hole" src="images/hole.png">'
         },
         {
             name: "Challenger",
-            symbol: '<img id="asteroid" src="/boardgame/images/asteroid2.png">'
+            symbol: '<img id="asteroid" src="images/asteroid2.png">'
         }
     ],
     $box: $('.box'),
@@ -24,45 +24,45 @@ var tic = {
             var $curSqNu = Number($("#piece-2").parent().prop("id"))                                                                            // 2. Create a variable ($curSqNu) and set the value to the number of the id of the square the other piece is in (because the switch player function has already happened)
             var $newSqNum = $curSqNu - 5                                                                                                        // 3. Create a variable ($newSqNum) and set teh value to the current square number minus 5                                             
             var $newSq = $("#" + $newSqNum)                                                                                                     // 4. Create a variable ($newSq) and set the value to make the id of the new square
-            var challengeBackSound = new Audio('/boardgame/sounds/lasergun.wav')                                                                // 5. Create a variable and set the value to a new sound
-            challengeBackSound.play()                                                                                                           // 6. Play 
-            $("#piece-2").fadeOut(1000,function() {
-                $newSq.append($("#piece-2"))
-                $('#piece-2').fadeIn(1000)
+            var challengeBackSound = new Audio('sounds/lasergun.wav')                                                                           // 5. Create a variable and set the value to a new sound
+            challengeBackSound.play()                                                                                                           // 6. Play that sound
+            $("#piece-2").fadeOut(1000,function() {                                                                                             // 7. Fade out the piece
+                $newSq.append($("#piece-2"))                                                                                                        // Then add the piece to the new square
+                $('#piece-2').fadeIn(1000)                                                                                                          // And fade it in
             })
             
         }
-        else if(x < 0 && game.currentPlayer.iden == 'piece-2') {
+        else if(x < 0 && game.currentPlayer.iden == 'piece-2') {                                                                            // Same as the above for the other player
             cPiece = game.player[0].icon
             var $curSqNu = Number($("#piece-1").parent().prop("id"))
             var $newSqNum = $curSqNu - 5
             var $newSq = $("#" + $newSqNum)
-            var challengeBackSound = new Audio('/boardgame/sounds/lasergun.wav')
+            var challengeBackSound = new Audio('sounds/lasergun.wav')
             challengeBackSound.play()
             $("#piece-1").fadeOut(1000,function() {
                 $newSq.append($("#piece-1"))
                 $('#piece-1').fadeIn(1000)
             })
         }
-        else if(x > 0 && game.currentPlayer.iden == 'piece-1') {
-            cPiece = game.player[1].icon
-            var $curSqNu = Number($("#piece-2").parent().prop("id"))
-            var $newSqNum = $curSqNu + 6
-            var $newSq = $("#" + $newSqNum)
-            var challengeForwardSound = new Audio('/boardgame/sounds/powerup2.wav')
-            challengeForwardSound.play()
-            $("#piece-2").fadeOut(1000,function() {
-                $newSq.append($("#piece-2"))
-                $('#piece-2').fadeIn(1000)
+        else if(x > 0 && game.currentPlayer.iden == 'piece-1') {                                                                            // If x is greater than 0 and the current player id is piece-1
+            cPiece = game.player[1].icon                                                                                                        // 1. Set the value of cPiece to the current player's icon
+            var $curSqNu = Number($("#piece-2").parent().prop("id"))                                                                            // 2. Create a variable ($curSqNu) and set the value to the number of the id of the square the other piece is in (because the switch player function has already happened)
+            var $newSqNum = $curSqNu + 6                                                                                                        // 3. Create a variable ($newSqNum) and set teh value to the current square number plus 6                                             
+            var $newSq = $("#" + $newSqNum)                                                                                                     // 4. Create a variable ($newSq) and set the value to make the id of the new square
+            var challengeForwardSound = new Audio('sounds/powerup2.wav')                                                                        // 5. Create a variable and set the value to a new sound
+            challengeForwardSound.play()                                                                                                        // 6. Play that sound
+            $("#piece-2").fadeOut(1000,function() {                                                                                             // 7. Fade out the piece
+                $newSq.append($("#piece-2"))                                                                                                        // Then add the piece to the new square
+                $('#piece-2').fadeIn(1000)                                                                                                          // And fade it in
             })
         }
-        else if(x > 0 && game.currentPlayer.iden == 'piece-2') {
+        else if(x > 0 && game.currentPlayer.iden == 'piece-2') {                                                                            // Same as the above for the other player
             console.log('move!')
             cPiece = game.player[0].icon
             var $curSqNu = Number($("#piece-1").parent().prop("id"))
             var $newSqNum = $curSqNu + 6
             var $newSq = $("#" + $newSqNum)
-            var challengeForwardSound = new Audio('/boardgame/sounds/powerup2.wav')
+            var challengeForwardSound = new Audio('sounds/powerup2.wav')
             challengeForwardSound.play()
             $("#piece-1").fadeOut(1000,function() {
                 $newSq.append($("#piece-1"))
@@ -140,11 +140,11 @@ var tic = {
                 if($(this).html() === ''){                                                                                                          // And if the there is no icon in the box 
                     $(this).html(tic.currentPlayer.symbol)                                                                                              // Put the icon of the current player into the box clicked
                     if(tic.currentPlayer === tic.player[0]){                                                                                                // If the current player is player1
-                        var blastSound = new Audio('/boardgame/sounds/balloon.wav')                                                                             // Create a variable whose value is a new sound
+                        var blastSound = new Audio('sounds/balloon.wav')                                                                             // Create a variable whose value is a new sound
                         blastSound.play()                                                                                                                       // Play that sound
                     }
                     else if (tic.currentPlayer === tic.player[1]){                                                                                          // If the current player is player2
-                        var thudSound = new Audio('/boardgame/sounds/thud.wav')                                                                                 // Create a variable wohse value is a new sound
+                        var thudSound = new Audio('sounds/thud.wav')                                                                                 // Create a variable wohse value is a new sound
                         thudSound.play()                                                                                                                        // Play that sound
                     }
                     if(tic.checkWinner() !== true && tic.isFull !== true) {                                                                                 // Then, if there still is no winner and the board is not full
