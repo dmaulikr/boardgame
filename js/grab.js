@@ -31,25 +31,16 @@ var grab = {
             })
         }
     },
-    reset: function() {
-        grab.count = 0
-        $('.count-bar').text("")
-        grab.timer = 6
-        $('.time-bar').text("Time left: " + grab.timer + " seconds")
-        $('.screw'). remove()
-        $('#exitG').remove()
-    },
     gameOver: function() {                                                        // FINISH THE GAME
         $('.modal-grab').append('<button id="exitG">Exit</button>')               // 1. show a button to exit the modal
         $('#exitG').on('click', function(){                                          // 2. on click of the button
             $('#challengeModal').css({"display": "none"})                                      // change the display of the modal to 'none'
             $('.modal-grab').css({"display": "none"})  
             grab.grabBump()
-            grab.reset()
+            // grab.reset()
             // $('#one-player').remove()
         })
     },
-
     playGame: function() {
         $(".go").on('click', function() {
             $('.field').append('<div id="o1" class="screw"></div><div id="o2" class="screw"></div><div id="o3" class="screw"></div><div id="o4" class="screw"></div><div id="o5" class="screw"></div><div id="o6" class="screw"></div><div id="o7" class="screw"></div><div id="o8" class="screw"></div>')
@@ -137,6 +128,17 @@ var grab = {
                 $('.count-bar').text("You've caught " + grab.count + " pieces!")
             })
         })
-        
     }
 }
+
+// For functionality that has been removed for the time being
+/*
+reset: function() {
+    grab.count = 0
+    $('.count-bar').text("")
+    grab.timer = 6
+    $('.time-bar').text("Time left: " + grab.timer + " seconds")
+    $('.screw'). remove()
+    $('#exitG').remove()
+}
+*/

@@ -1,7 +1,6 @@
 //Main Board Game
 
 var game = {
-    // Variables
     player: [
         {
             name: undefined,
@@ -16,7 +15,6 @@ var game = {
     ],
     rollClear: 0,
 
-    // Functions
     turnOver: function() {
         n = 0
         game.rollClear = 0
@@ -59,20 +57,33 @@ var game = {
         }
     },
     challenge: function($piece) {
-        if($piece.parent().prop("class") == "square challenge") {
+        if($piece.parent().prop("class") == "square challenge-one") {
             var challengeStartSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/explosionultrabass.wav')
             challengeStartSound.play()
             console.log('challenge')
             $('.modal-content').css({"display": "block"})
-            $('.modal-question').css({"display": "block"})
+            $('.modal-grab').css({"display": "block"})
             $('#challengeModal').css({"display": "block"})
-            $('modal-tic').css({"display": "none"})
+            grab.playGame()
+            // $('modal-tic').css({"display": "none"})
+        }
+        else if ($piece.parent().prop("class") == "square challenge-two") {
+            var challengeStartSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/explosionultrabass.wav')
+            challengeStartSound.play()
+            console.log('challenge')
+            $('.modal-content').css({"display": "block"})
+            $('.modal-tic').css({"display": "block"})
+            $('#challengeModal').css({"display": "block"})
+            tic.playGame()
+            $('.status-bar').text("It's " + tic.currentPlayer.name + "'s turn!")
+            // $('modal-tic').css({"display": "none"})
         }
     },
     checkWinner: function(target) {
-        if(target === 52) {
-            $('h1').text('Winner')
-            $('body').css({"background-image": "url('images/earth.gif')"})
+        if(target === 4) {
+            $('.modal-content').css({"display": "block"})
+            $('.modal-win').css({"display": "block"})
+            $('#challengeModal').css({"display": "block"})
         }
     },
     movePiece: function() {
@@ -126,18 +137,31 @@ $('form').on('submit', function(evnt) {
         var $roll = $('<button>').addClass('roll').text('Roll')
         $('.roll-bar').append($roll)
         $roll.on('click', game.roll)
-    })
-
- 
-
-    
-    
+    })    
 })
 
 
 
+// For functionality that has been removed for the time being
+/*
+// Click One Player
+$('#one-player').on('click', function() {
+    console.log('clicked one player')
+    $('.modal-question').css({"display": "none"})
+    $('.go').css({"display": "block"})
+    $('.modal-grab').css({"display": "block"})
+    grab.playGame()
+})
 
-
-
-
-
+// Click Two Player
+$('#two-player').on('click', function() {
+    console.log('clicked two player')
+    $('.modal-question').css({"display": "none"})
+    $('.modal-tic').css({"display": "block"})
+    $('.box').text('')
+    tic.squaresFilled = 0
+    $('#exit').remove()
+    tic.playGame()
+    $('.status-bar').text("It's " + tic.currentPlayer.name + "'s turn!")
+})
+*/

@@ -4,7 +4,7 @@ var tic = {
     player: [
         {
             name: "Player",
-            symbol: '<img id="hole" src="file:///Users/katiegoines/WDI_51/W03/project_01_game/images/hole2.png">'
+            symbol: '<img id="hole" src="file:///Users/katiegoines/WDI_51/W03/project_01_game/images/hole.png">'
         },
         {
             name: "Challenger",
