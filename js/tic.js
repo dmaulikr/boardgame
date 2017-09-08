@@ -4,11 +4,11 @@ var tic = {
     player: [
         {
             name: "Player",
-            symbol: '<img id="hole" src="https://github.com/katiegoines/boardgame/blob/master/images/hole.png">'
+            symbol: '<img id="hole" src="https://i.imgur.com/6rWTYMn.png">'
         },
         {
             name: "Challenger",
-            symbol: '<img id="asteroid" src="https://github.com/katiegoines/boardgame/blob/master/images/asteroid2.png">'
+            symbol: '<img id="asteroid" src="https://i.imgur.com/elZKMAQ.png">'
         }
     ],
     $box: $('.box'),
