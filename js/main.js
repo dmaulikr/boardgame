@@ -124,8 +124,8 @@ var n = undefined
 
 $('form').on('submit', function(evnt) {                                                                                                     // When a form is submitted,
     evnt.preventDefault()                                                                                                                       // 1. Prevent the default actions (refreshing the page)
-    // var startSound = new Audio('~/sounds/comet.wav')
-    // startSound.play()                                                                                                                           // 2. Play the sound identified in the line above
+    var startSound = new Audio('boardgame/sounds/comet.wav')
+    startSound.play()                                                                                                                           // 2. Play the sound identified in the line above
     game.player[0].name = $('#p1-name').val() || "Player 1"                                                                                     // 3. Set the name of player 1 to the value of the first input box, or if it was left empty, to Player 1
     game.player[1].name = $('#p2-name').val() || "Player 2"                                                                                     // 4. Set the name of player 2 to the value of the second input box, or if it was left empty, to Player 2
     $('form').fadeOut(1000, function() {                                                                                                        // 5. Fade out the form

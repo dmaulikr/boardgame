@@ -37,7 +37,7 @@ As a player, I know when I've won because it is announced clearly.
 
 ### Outstanding Challenges
 -- 
-The code, specificaly on the tic-tac-toe board and the catching challenge, needs to be further refactored. This code is not DRY.
+The tic-tac-toe board and the catching challenge code needs to be refactored. This code is not DRY. But these are bonus games, so..
 
 When a player lands on a "challenge" space, the intention was to allow them to choose whether they want to play a one- or two-player game. I broke the code, though, and neither supplementary game is resetting correctly after the first time it's played. Until this can be figured out, this has been detoured around and commented out.
 
