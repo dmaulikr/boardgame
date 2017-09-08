@@ -59,9 +59,24 @@ var game = {
         if($piece.parent().prop("class") == "square challenge-one") {                                                                       // If the piece lands on is a challenge-one square
             var challengeStartSound = new Audio('sounds/explosionultrabass.wav')                                                                // 1. Create a variable whose value is a new sound
             challengeStartSound.play()                                                                                                          // 2. Play that sound
-            $('.modal-content').css({"display": "block"})                                                                                       // 3. Show the modal-content div
-            $('.modal-grab').css({"display": "block"})                                                                                          // 4. Show the modal-grab div
-            $('#challengeModal').css({"display": "block"})                                                                                      // 5. Show the challengeModal div
+            
+            if(grab.gamePlayed === false){
+                $('.modal-content').css({"display": "block"})                                                                                       // 3. Show the modal-content div
+                $('.modal-grab').css({"display": "block"})                                                                                          // 4. Show the modal-grab div
+                $('#challengeModal').css({"display": "block"})                                                                                      // 5. Show the challengeModal div
+            }
+            // else if(grab.gamePlayed === true) {
+            //     $('.modal-content').css({"display": "block"})                                                                                       // 3. Show the modal-content div
+            //     $('.modal-safe').css({"display": "block"})                                                                                           // 4. Show the modal-grab div
+            //     // $('.modal-safe').append('<button id="exitG">Exit</button>')
+            //     $('#challengeModal').css({"display": "block"})                                                                                      // 5. Show the challengeModal div
+            //     $('#exitG').on('click', function(){                                          // 2. on click of the button
+            //         $('#challengeModal').css({"display": "none"})                                      // change the display of the modal to 'none'
+            //         $('.modal-safe').css({"display": "none"})
+            //         $('.modal-content').css({"display": "none"})
+            //     })
+            // }
+            
             grab.playGame()                                                                                                                     // 6. Run the grab game
             // $('modal-tic').css({"display": "none"})
         }
@@ -69,7 +84,12 @@ var game = {
             var challengeStartSound = new Audio('sounds/explosionultrabass.wav')                                                                // 1. Create a variable whose value is a new sound
             challengeStartSound.play()                                                                                                          // 2. Play that sound
             $('.modal-content').css({"display": "block"})                                                                                       // 3. Show the modal-content div
-            $('.modal-tic').css({"display": "block"})                                                                                           // 4. Show the modal-grab div
+            if(tic.checkWinner() !== true){
+                $('.modal-tic').css({"display": "block"})                                                                                           // 4. Show the modal-grab div
+            }
+            // else if(tic.checkWinner() === true) {
+            //     $('.modal-safe').css({"display": "block"})                                                                                           // 4. Show the modal-grab div
+            // }
             $('#challengeModal').css({"display": "block"})                                                                                      // 5. Show the challengeModal div
             tic.playGame()                                                                                                                      // 6. Run the tic tac toe game
             $('.status-bar').text("It's " + tic.currentPlayer.name + "'s turn!")

@@ -31,7 +31,7 @@ p {
 .screw {
     width: 100px;
     height: 100px;
-    background-image: url('/boardgame/images/screw.png');
+    background-image: url('../images/screw.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

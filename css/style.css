@@ -174,7 +174,7 @@ button {
     background-position: center;
 }
 
-.modal-tic, .modal-grab, .modal-win {
+.modal-tic, .modal-grab, .modal-win, .modal-safe {
     display: none;
 }
 

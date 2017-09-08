@@ -3,6 +3,7 @@ var grab = {
     $screw: $('.screw'),
     count: 0,
     timer: 5,
+    gamePlayed: false,
 
     grabBump: function() {
         var cPiece = undefined
@@ -40,6 +41,7 @@ var grab = {
             // grab.reset()
             // $('#one-player').remove()
         })
+        grab.gamePlayed = true
     },
     playGame: function() {
         $(".go").on('click', function() {
