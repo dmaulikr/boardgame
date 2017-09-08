@@ -8,7 +8,7 @@ var tic = {
         },
         {
             name: "Challenger",
-            symbol: '<img id="asteroid" src ="/boardgame/images/asteroid2.png">'
+            symbol: '<img id="asteroid" src="/boardgame/images/asteroid2.png">'
         }
     ],
     $box: $('.box'),
