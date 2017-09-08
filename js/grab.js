@@ -7,7 +7,7 @@ var grab = {
     reset: function() {
         grab.count = 0
         $('.count-bar').text("")
-        grab.timer = 5
+        grab.timer = 6
         $('.time-bar').text("Time left: " + grab.timer + " seconds")
         $('.planet'). remove()
         $('#exitG').remove()
@@ -30,7 +30,7 @@ var grab = {
             function fn(){
                 $('.time-bar').text("Time left: " + grab.timer + " seconds")
                 grab.timer = grab.timer - 1
-                if (grab.timer <= 0){ 
+                if (grab.timer < 0){ 
                     clearInterval(timerInterval)
                     $('.planet').remove()
                     grab.gameOver()
@@ -41,63 +41,63 @@ var grab = {
             setInterval(function(){
                 $('#o1').animate({
                 left: Math.random() * 600, 
-                top: Math.random() * 600,
+                top: Math.random() * 400,
                 }, 1000)
             })
         
             setInterval(function(){
                 $('#o2').animate({
                 left: Math.random() * 600, 
-                top: Math.random() * 600,
+                top: Math.random() * 400,
                 }, 950)
             })
         
             setInterval(function(){
                 $('#o3').animate({
                 left: Math.random() * 600, 
-                top: Math.random() * 600,
+                top: Math.random() * 400,
                 }, 900)
             })
         
             setInterval(function(){
                 $('#o4').animate({
                 left: Math.random() * 600, 
-                top: Math.random() * 600,
+                top: Math.random() * 400,
                 }, 850)
             })
         
             setInterval(function(){
                 $('#o5').animate({
                 left: Math.random() * 600, 
-                top: Math.random() * 600,
+                top: Math.random() * 400,
                 }, 800)
             })
         
             setInterval(function(){
                 $('#o6').animate({
                 left: Math.random() * 600, 
-                top: Math.random() * 600,
+                top: Math.random() * 400,
                 }, 750)
             })
         
             setInterval(function(){
                 $('#o7').animate({
                 left: Math.random() * 600, 
-                top: Math.random() * 600,
+                top: Math.random() * 400,
                 }, 700)
             })
         
             setInterval(function(){
                 $('#o8').animate({
                 left: Math.random() * 600, 
-                top: Math.random() * 600,
+                top: Math.random() * 400,
                 }, 650)
             })
         
             setInterval(function(){
                 $('#o9').animate({
                 left: Math.random() * 600, 
-                top: Math.random() * 600,
+                top: Math.random() * 400,
                 }, 600)
             })
         

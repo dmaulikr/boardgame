@@ -5,12 +5,12 @@ var game = {
     player: [
         {
             name: undefined,
-            icon: '<img id="piece-1" class="piece" src="https://lh3.googleusercontent.com/ez8pDFoxU2ZqDmyfeIjIba6dWisd8MY_6choHhZNpO0WwLhICu0v0s5eV2WHOhuhKw=w170">',
+            icon: '<img id="piece-1" class="piece" src="http://images.clipartpanda.com/spaceship-clipart-rocket-dark-blue-window-hi.png">',
             iden: "piece-1"
         },
         {
             name: undefined,
-            icon: '<img id="piece-2" class="piece" src="https://clipartion.com/wp-content/uploads/2015/10/penguin-clip-art-for-kids-free-clipart-images-1024x1024.png">',
+            icon: '<img id="piece-2" class="piece" src="http://www.clker.com/cliparts/R/a/Z/H/O/K/green-rocket-md.png">',
             iden: "piece-2"
         }
     ],
@@ -21,7 +21,7 @@ var game = {
         n = 0
         game.rollClear = 0
         game.switchPlayer()
-        $('.roll').css({"background": "#75B775"})
+        $('.roll').css({"background": "rgb(255, 255, 255)","background": "rgba(255, 255, 255, 0.4)", "color":"white"})
     },
     switchPlayer: function() {
         if(game.currentPlayer === game.player[0] && game.rollClear === 0){
@@ -151,12 +151,16 @@ var game = {
             var $currentSquareNum = Number($(this).parent().prop("id"))         //console.log("current sq num: " + $currentSquareNum)
             var newSquareNum = $currentSquareNum + n                            //console.log("new sq num: " + newSquareNum)    //console.log("n: " + n)
             var $newSquare = $('#' + newSquareNum)
-            $newSquare.append($(this))                   
+            $(this).fadeOut(500, function() {
+                $newSquare.append($(this))
+                $(this).fadeIn(500, function() {
+                    game.challenge($(this))
+                    game.bump($(this), newSquareNum)
+                })
+            })  
             
             game.turnOver()
-            game.bump($(this), newSquareNum)
             game.checkWinner(newSquareNum)
-            game.challenge($(this))
         }         
     },
     roll: function() {
@@ -164,7 +168,7 @@ var game = {
             n = Math.ceil(Math.random() * 6)                                //console.log("n on roll: " + n)
             $('.dice-num').text("You rolled a " + n)
             game.rollClear += 1
-            $('.roll').css({"background": "white"})
+            $('.roll').css({ "background": "rgba(255,255,255,0.1)", "color":"#575259", "border": "0"})
             $('.piece').on('click', game.movePiece)
         }
     },

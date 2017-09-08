@@ -3,63 +3,88 @@ html, body {
     padding: 0;
 }
 
+body {
+    background-image: url('../images/sky-blue.jpg');
+    background-repeat: no-repeat;
+    font-family: 'Patrick Hand SC', cursive;
+    letter-spacing: 2px;
+    color: white;
+}
+
 h1 {
     margin: 0;
-    padding: 15px;
-    font-family: sans-serif;
+    padding: 15px 0 10px 0;
     text-align: center;
-    background: aliceblue;
+    color: white;
+    letter-spacing: 8px;
+}
+
+input{
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 4px;
+    border: 1px solid gray;
+    height: 17px;
+    padding: 0 0 0 5px;
 }
 
 .turn-bar {
     height: 25px;
     margin: 0 0 35px 0;
-    padding: 15px;    
+    padding: 10px;    
     text-align: center;
-    font-family: sans-serif;
     font-size: 20px;
+    color:white;
 }
 
 button {
-    background: white;
-    border: 1px solid gray;
-    border-radius: 5px;
+    height: 19px; 
+    min-width: 35px;   
+    border: 1px solid darkgray;
+    border-radius: 3px;
+    font-family: 'Josefin Sans', sans-serif;
+    padding: 3px 2px 2px 2px;
 }
 
 .board {
-    width: 520px;
+    width: 490px;
     margin: 0 auto 20px;
 }
 
 .square {
-    width: 50px;
-    height: 50px;
-    background: lightgray;
+    width: 45px;
+    height: 45px;
     border-radius: 25%;
     margin: 1px;
     float:left;
     position: relative;
-    
-    text-align: center;
-    font-family: sans-serif;
-    font-weight: 100;
-    font-size: 10px;
+    border: 1px solid gray;
 }
 
 .backward {
-    background: #EAC3CA;
-}
+    background-image: url('../images/vortex-back.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}    
 
 .forward {
-    background: #B9B9D9;
+    background-image: url('../images/vortex-forward.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
 }
 
 .challenge {
-    background: #88B688
+    background-image: url('../images/vortex-challenge.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .start, .finish {
-    background: #E0E0A1;
+    background: black;
+    background: rgba(115, 56, 231, 0.30);
 }
 
 
@@ -81,7 +106,7 @@ p {
     margin: 0 auto;
 }
 
-img:hover {
+.piece:hover {
     transform: scale(2.1);
 }
 
@@ -90,20 +115,21 @@ img:hover {
 }
 
 .roll-bar {
-    margin-top: 50px;
-    background: aliceblue;
+    margin-top: 20px;
     min-height: 25px;
     padding: 15px;
+    color:white;
 }
 
 .roll {
     margin: 3px 25px;
-    background: #75B775;
+    width: 75px;
     float:left;
+    background: rbg (255,255,255);
+    background: rgba (255,255,255,0.4);
 }
 
 .dice-num {
-    font-family: sans-serif;
     font-size: 20px;
     text-align: center;
     margin-right: 88.41px;
@@ -121,20 +147,34 @@ img:hover {
     height: 100%;
     overflow: auto;
     background: rgb(0,0,0);
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.8);
 }
 
 .modal-content {
-    background-color: #FEFEFE;
+    background-image: url('../images/sky-blue.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
     margin: 15px auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    height: 800px;
+    height: 600px;
 }
 
 .modal-question { 
     display: none;
+    width: 90%;
+    height: 400px;
+    margin: 50px auto;
+    text-align: center;
+    font-size: 50px;
+}
+
+#one-player, #two-player {
+    width: 100px;
+    height: 40px;
+    vertical-align: middle;
+    font-size: 15px;
 }
 
 .modal-tic {
@@ -143,11 +183,6 @@ img:hover {
 
 .modal-grab {
     display: none;
-}
-
-.modal-paragraph {
-    height: 15px;
-    float: left;
 }
 
 .one-player, .two-player {

@@ -4,11 +4,11 @@ var tic = {
     player: [
         {
             name: "Defender",
-            symbol: "X"
+            symbol: '<img id="hole" src="https://t3.ftcdn.net/jpg/01/41/84/84/500_F_141848405_Xe2Ltjeyj7Z8zwDfWQ0rNIIt4gJ8JZDh.jpg">'
         },
         {
             name: "Challenger",
-            symbol: "O"
+            symbol: '<img id="hole" src="https://pbs.twimg.com/profile_images/3627005607/2aae0e25c02fe03e8b22437d69d6802c_400x400.png">'
         }
     ],
     $box: $('.box'),
@@ -26,9 +26,9 @@ var tic = {
         return tic.player[1].name
     },
     checkLine: function(a,b,c) {                                                // CHECK IF ANY LINE HAS MATCHING SYMBOLS
-        if ($('.box')[a].innerText === $('.box')[b].innerText &&                    // if the inner text of box A is equal to the inner text of box B 
-            $('.box')[a].innerText === $('.box')[c].innerText &&                    // AND the inner text of box A is equal to the inner text of box C
-            $('.box')[a].innerText !== '') {                                        // AND the inner text of box A is not blank
+        if ($('.box')[a].innerHTML === $('.box')[b].innerHTML &&                    // if the inner text of box A is equal to the inner text of box B 
+            $('.box')[a].innerHTML === $('.box')[c].innerHTML &&                    // AND the inner text of box A is equal to the inner text of box C
+            $('.box')[a].innerHTML !== '') {                                        // AND the inner text of box A is not blank
                 return true                                                             // return true
         }
     }, 
@@ -100,7 +100,7 @@ var tic = {
         $('.box').on('click', function() {
             if(tic.isFull() !== true && tic.checkWinner() !== true){
                 if($(this).text() === ''){
-                    $(this).text(tic.currentPlayer.symbol)
+                    $(this).html(tic.currentPlayer.symbol)
                     tic.squaresFilled += 1
                     if(tic.checkWinner() !== true && tic.isFull !== true) {
                         tic.switchPlayer()

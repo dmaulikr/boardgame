@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tic.css">
     <link rel="stylesheet" href="css/catch.css">
+    <link href="https://fonts.googleapis.com/css?family=Concert+One|Josefin+Sans|Patrick+Hand+SC|Permanent+Marker" rel="stylesheet">
     <script src="js/jquery-3.2.1.js"></script>
     <title>Game</title>
 </head>
 <body>
     <header>
-        <h1>Board Game</h1>
+        <h1>Race Through Space</h1>
         
     </header>
     <main>
@@ -28,16 +29,15 @@
         <div id='challengeModal' class='modal'>
             <div class='modal-content'>
                 <div class='modal-question'>
-                    <div class="modal-paragraph">
-                        <p>Do you want a 
-                            <button id="one-player">One Player</button> or 
-                            <button id="two-player">Two Player</button> 
-                            challenge?
-                        </p>
-                    </div>
+                    Do you want a <br />
+                    <button id="one-player">One Player</button> 
+                    or 
+                    <button id="two-player">Two Player</button> <br />
+                    challenge?
                 </div>
                 <div class="modal-tic">
                         <h1>Tic Tac Toe Challenge</h1>
+                        <p>You and your opponent space team have gotten caught up in an asteroid belt! Blast 3 holes in a row to get through! </p>
                         <div class="grid">
                             <div class="box"></div>
                             <div class="box"></div>
@@ -52,7 +52,13 @@
                         <div class="status-bar"></div>
                 </div>
                 <div class="modal-grab">
-                        <h1>Collect All the Parts</h1>
+                        <div class="heading">
+                            <h1>Collect All the Parts</h1>
+                        </div>
+                        <div class='info'>
+                            Oh no! You got pretty banged up going through a meteor shower and lost some screws! Collect as many as you can in 6 seconds!
+                        </div>
+                            
                         <div class="field">
                             <div class="time-bar">Time left: 6 seconds</div>
                             <div class="count-bar"></div>
