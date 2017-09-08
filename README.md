@@ -4,7 +4,7 @@
 
 The goal of Race Through Space is to be the first player to reach Earth from their starting point on some-orange-planet-far-far-away.
 
-![Race Through Space] (https://i.imgur.com/rQiLqIO.png)
+![Race Through Space] (/boardgame/images/screenshot.png)
 
 Taking turns, two players "roll dice" to move their spaceships forward on the board, hitting vortexes along the way, which move players forward, back, or challenge them to additional games for the chance to move extra spaces.
 
