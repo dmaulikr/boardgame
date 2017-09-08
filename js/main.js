@@ -4,12 +4,12 @@ var game = {
     player: [
         {
             name: undefined,
-            icon: '<img id="piece-1" class="piece" src="file:///Users/katiegoines/WDI_51/W03/project_01_game/images/spaceship-yellow-sm.png">',
+            icon: '<img id="piece-1" class="piece" src="../images/spaceship-yellow-sm.png">',
             iden: "piece-1"
         },
         {
             name: undefined,
-            icon: '<img id="piece-2" class="piece" src="file:///Users/katiegoines/WDI_51/W03/project_01_game/images/spaceship-green-sm.png">',
+            icon: '<img id="piece-2" class="piece" src="../images/spaceship-green-sm.png">',
             iden: "piece-2"
         }
     ],
@@ -87,9 +87,9 @@ var game = {
         }
     },
     movePiece: function() {
-        if($(this).prop("id") == game.currentPlayer.iden && game.rollClear !== 0 && game.gameOver() !== "winner"){
-            var $currentSquareNum = Number($(this).parent().prop("id"))         //console.log("current sq num: " + $currentSquareNum)
-            var newSquareNum = $currentSquareNum + n                            //console.log("new sq num: " + newSquareNum)    //console.log("n: " + n)
+        if($(this).prop("id") == game.currentPlayer.iden && game.rollClear !== 0 && game.gameOver() !== "winner"){                          // If the id of the piece clicked is the same as the id of the current player's piece, and the rollClear funciton 
+            var $currentSquareNum = Number($(this).parent().prop("id"))
+            var newSquareNum = $currentSquareNum + n
             var $newSquare = $('#' + newSquareNum)
             var regMoveSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/laserblast.wav')
             regMoveSound.play()
@@ -106,37 +106,34 @@ var game = {
         }         
     },
     roll: function() {
-        if(game.rollClear === 0) {
+        if(game.rollClear === 0) {                                                                                                          // If the variable rollClear has a value of 0
             var diceSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/dice.wav')
-            diceSound.play()
-            n = Math.ceil(Math.random() * 6)                                //console.log("n on roll: " + n)
-            $('.dice-num').text("You rolled a " + n)
-            game.rollClear += 1
-            $('.roll').css({ "background": "rgba(255,255,255,0.1)", "color":"#575259", "border": "0"})
-            $('.piece').on('click', game.movePiece)
+            diceSound.play()                                                                                                                    // 1. Play the sound identified in the line above
+            n = Math.ceil(Math.random() * 6)                                                                                                    // 2. Set the variable n to a random number between 0 and 6 (rounded up)
+            $('.dice-num').text("You rolled a " + n)                                                                                            // 3. Show what was rolled on the screen
+            game.rollClear += 1                                                                                                                 // 4. And add 1 to the current value of rollClear, so that the roll button can't be clicked again until the current player has moved their piece
+            $('.roll').css({ "background": "rgba(255,255,255,0.1)", "color":"#575259", "border": "0"})                                          // 5. And change the background color of the roll button so it's not as prominent when people aren't suppoed to click on it
+            $('.piece').on('click', game.movePiece)                                                                                             // 6. When the current game piece is clicked on, run the movePiece function
         }
     },
 }
-
-
-
 
 game.currentPlayer = game.player[0]
 var n = undefined
 
 
-$('form').on('submit', function(evnt) {
-    evnt.preventDefault()
-    var startSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/comet.wav')
-    startSound.play()
-    game.player[0].name = $('#p1-name').val() || "Player 1"
-    game.player[1].name = $('#p2-name').val() || "Player 2"
-    $('form').fadeOut(1000, function() {
-        $('.turn-bar').html(game.currentPlayer.name + " is up first. Click the 'roll' button then click your piece to move.")
-        $('#0').append(game.player[0].icon, game.player[1].icon)
-        var $roll = $('<button>').addClass('roll').text('Roll')
-        $('.roll-bar').append($roll)
-        $roll.on('click', game.roll)
+$('form').on('submit', function(evnt) {                                                                                                     // When a form is submitted,
+    evnt.preventDefault()                                                                                                                       // 1. Prevent the default actions (refreshing the page)
+    var startSound = new Audio('../sounds/comet.wav')
+    startSound.play()                                                                                                                           // 2. Play the sound identified in the line above
+    game.player[0].name = $('#p1-name').val() || "Player 1"                                                                                     // 3. Set the name of player 1 to the value of the first input box, or if it was left empty, to Player 1
+    game.player[1].name = $('#p2-name').val() || "Player 2"                                                                                     // 4. Set the name of player 2 to the value of the second input box, or if it was left empty, to Player 2
+    $('form').fadeOut(1000, function() {                                                                                                        // 5. Fade out the form
+        $('.turn-bar').html(game.currentPlayer.name + " is up first. Click the 'roll' button then click your piece to move.")                       // After the form has faded out,change the text of the turn-bar to announce who's turn is first
+        $('#0').append(game.player[0].icon, game.player[1].icon)                                                                                    // And append the player icons to the first square
+        var $roll = $('<button>').addClass('roll').text('Roll')                                                                                     // And create a roll button
+        $('.roll-bar').append($roll)                                                                                                                // And add the roll button
+        $roll.on('click', game.roll)                                                                                                                // On click of the roll button, run the roll function
     })    
 })
 
