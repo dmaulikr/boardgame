@@ -80,7 +80,7 @@ var game = {
         }
     },
     checkWinner: function(target) {
-        if(target === 4) {
+        if(target === 52) {
             $('.modal-content').css({"display": "block"})
             $('.modal-win').css({"display": "block"})
             $('#challengeModal').css({"display": "block"})
