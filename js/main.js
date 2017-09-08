@@ -58,85 +58,8 @@ var game = {
             })
         }
     },
-    challengeBump: function() {
-        var cPiece = undefined
-        if(x < 0 && game.currentPlayer.iden == 'piece-1') {
-            cPiece = game.player[1].icon
-            var $curSqNu = Number($("#piece-2").parent().prop("id"))
-            var $newSqNum = $curSqNu - 5
-            var $newSq = $("#" + $newSqNum)
-            var challengeBackSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/lasergun.wav')
-            challengeBackSound.play()
-            $("#piece-2").fadeOut(1000,function() {
-                $newSq.append($("#piece-2"))
-                $('#piece-2').fadeIn(1000)
-            })
-            
-        }
-        else if(x < 0 && game.currentPlayer.iden == 'piece-2') {
-            console.log('move!')
-            cPiece = game.player[0].icon
-            var $curSqNu = Number($("#piece-1").parent().prop("id"))
-            var $newSqNum = $curSqNu - 5
-            var $newSq = $("#" + $newSqNum)
-            var challengeBackSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/lasergun.wav')
-            challengeBackSound.play()
-            $("#piece-1").fadeOut(1000,function() {
-                $newSq.append($("#piece-1"))
-                $('#piece-1').fadeIn(1000)
-            })
-        }
-        else if(x > 0 && game.currentPlayer.iden == 'piece-1') {
-            cPiece = game.player[1].icon
-            var $curSqNu = Number($("#piece-2").parent().prop("id"))
-            var $newSqNum = $curSqNu + 6
-            var $newSq = $("#" + $newSqNum)
-            var challengeForwardSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/powerup2.wav')
-            challengeForwardSound.play()
-            $("#piece-2").fadeOut(1000,function() {
-                $newSq.append($("#piece-2"))
-                $('#piece-2').fadeIn(1000)
-            })
-        }
-        else if(x > 0 && game.currentPlayer.iden == 'piece-2') {
-            console.log('move!')
-            cPiece = game.player[0].icon
-            var $curSqNu = Number($("#piece-1").parent().prop("id"))
-            var $newSqNum = $curSqNu + 6
-            var $newSq = $("#" + $newSqNum)
-            var challengeForwardSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/powerup2.wav')
-            challengeForwardSound.play()
-            $("#piece-1").fadeOut(1000,function() {
-                $newSq.append($("#piece-1"))
-                $('#piece-1').fadeIn(1000)
-            })
-        }
-    },
-    grabBump: function() {
-        var cPiece = undefined
-        if(game.currentPlayer.iden == 'piece-1') {
-            cPiece = game.player[1].icon
-            var $curSqNu = Number($("#piece-2").parent().prop("id"))
-            var $newSqNum = $curSqNu + grab.count
-            var $newSq = $("#" + $newSqNum)
-
-            $("#piece-2").fadeOut(1000,function() {
-                $newSq.append($("#piece-2"))
-                $('#piece-2').fadeIn(1000)
-            })
-        }
-        else if(game.currentPlayer.iden == 'piece-2') {
-            cPiece = game.player[0].icon
-            var $curSqNu = Number($("#piece-1").parent().prop("id"))
-            var $newSqNum = $curSqNu + grab.count
-            var $newSq = $("#" + $newSqNum)
-
-            $("#piece-1").fadeOut(1000,function() {
-                $newSq.append($("#piece-1"))
-                $('#piece-1').fadeIn(1000)
-            })
-        }
-    },
+    
+    
     challenge: function($piece) {
         if($piece.parent().prop("class") == "square challenge") {
             var challengeStartSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/explosionultrabass.wav')
@@ -177,6 +100,8 @@ var game = {
     },
     roll: function() {
         if(game.rollClear === 0) {
+            var diceSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/dice.wav')
+            diceSound.play()
             n = Math.ceil(Math.random() * 6)                                //console.log("n on roll: " + n)
             $('.dice-num').text("You rolled a " + n)
             game.rollClear += 1
@@ -195,19 +120,21 @@ var n = undefined
 
 $('form').on('submit', function(evnt) {
     evnt.preventDefault()
+    var startSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/comet.wav')
+    startSound.play()
     game.player[0].name = $('#p1-name').val() || "Player 1"
     game.player[1].name = $('#p2-name').val() || "Player 2"
     $('form').fadeOut(1000, function() {
         $('.turn-bar').html(game.currentPlayer.name + " is up first. Click the 'roll' button then click your piece to move.")
+        $('#0').append(game.player[0].icon, game.player[1].icon)
+        var $roll = $('<button>').addClass('roll').text('Roll')
+        $('.roll-bar').append($roll)
+        $roll.on('click', game.roll)
     })
 
-    $('#0').append(game.player[0].icon, game.player[1].icon)
-    $('.piece').fadeIn(1000)
-    var $roll = $('<button>').addClass('roll').text('Roll')
-    $('.roll-bar').append($roll)
-    $('.roll').fadeIn(1000)
+ 
 
-    $roll.on('click', game.roll)
+    
     
 })
 

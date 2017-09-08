@@ -8,7 +8,7 @@ var tic = {
         },
         {
             name: "Challenger",
-            symbol: '<img id="hole" src="https://pbs.twimg.com/profile_images/3627005607/2aae0e25c02fe03e8b22437d69d6802c_400x400.png">'
+            symbol: '<img id="asteroid" src="https://pbs.twimg.com/profile_images/3627005607/2aae0e25c02fe03e8b22437d69d6802c_400x400.png">'
         }
     ],
     $box: $('.box'),
@@ -16,6 +16,61 @@ var tic = {
     squaresFilled: 0,
 
     // Functions
+
+    ticBump: function() {
+        var cPiece = undefined
+        if(x < 0 && game.currentPlayer.iden == 'piece-1') {
+            cPiece = game.player[1].icon
+            var $curSqNu = Number($("#piece-2").parent().prop("id"))
+            var $newSqNum = $curSqNu - 5
+            var $newSq = $("#" + $newSqNum)
+            var challengeBackSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/lasergun.wav')
+            challengeBackSound.play()
+            $("#piece-2").fadeOut(1000,function() {
+                $newSq.append($("#piece-2"))
+                $('#piece-2').fadeIn(1000)
+            })
+            
+        }
+        else if(x < 0 && game.currentPlayer.iden == 'piece-2') {
+            console.log('move!')
+            cPiece = game.player[0].icon
+            var $curSqNu = Number($("#piece-1").parent().prop("id"))
+            var $newSqNum = $curSqNu - 5
+            var $newSq = $("#" + $newSqNum)
+            var challengeBackSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/lasergun.wav')
+            challengeBackSound.play()
+            $("#piece-1").fadeOut(1000,function() {
+                $newSq.append($("#piece-1"))
+                $('#piece-1').fadeIn(1000)
+            })
+        }
+        else if(x > 0 && game.currentPlayer.iden == 'piece-1') {
+            cPiece = game.player[1].icon
+            var $curSqNu = Number($("#piece-2").parent().prop("id"))
+            var $newSqNum = $curSqNu + 6
+            var $newSq = $("#" + $newSqNum)
+            var challengeForwardSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/powerup2.wav')
+            challengeForwardSound.play()
+            $("#piece-2").fadeOut(1000,function() {
+                $newSq.append($("#piece-2"))
+                $('#piece-2').fadeIn(1000)
+            })
+        }
+        else if(x > 0 && game.currentPlayer.iden == 'piece-2') {
+            console.log('move!')
+            cPiece = game.player[0].icon
+            var $curSqNu = Number($("#piece-1").parent().prop("id"))
+            var $newSqNum = $curSqNu + 6
+            var $newSq = $("#" + $newSqNum)
+            var challengeForwardSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/powerup2.wav')
+            challengeForwardSound.play()
+            $("#piece-1").fadeOut(1000,function() {
+                $newSq.append($("#piece-1"))
+                $('#piece-1').fadeIn(1000)
+            })
+        }
+    },
     checkLine: function(a,b,c) {                                                // CHECK IF ANY LINE HAS MATCHING SYMBOLS
         if ($('.box')[a].innerHTML === $('.box')[b].innerHTML &&                    // if the inner text of box A is equal to the inner text of box B 
             $('.box')[a].innerHTML === $('.box')[c].innerHTML &&                    // AND the inner text of box A is equal to the inner text of box C
@@ -76,7 +131,7 @@ var tic = {
             $('#challengeModal').css({"display": "none"})                                     // change the display of the modal to 'none'
             $('.modal-tic').css({"display": "none"})
 
-            game.challengeBump()
+            tic.ticBump()
 
         })
         if(tic.draw() === true) {                                                   // 3. if the game was a draw
@@ -92,6 +147,14 @@ var tic = {
             if(tic.isFull() !== true && tic.checkWinner() !== true){
                 if($(this).text() === ''){
                     $(this).html(tic.currentPlayer.symbol)
+                    if(tic.currentPlayer === tic.player[0]){
+                        var blastSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/balloon.wav')
+                        blastSound.play()
+                    }
+                    else if (tic.currentPlayer === tic.player[1]){
+                        var thudSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/thud.wav')
+                        thudSound.play()
+                    }
                     tic.squaresFilled += 1
                     if(tic.checkWinner() !== true && tic.isFull !== true) {
                         tic.switchPlayer()

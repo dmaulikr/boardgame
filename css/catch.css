@@ -37,3 +37,7 @@ p {
     position: relative;
     display:inline-block;
 }
+
+#exitG {
+    float:right;
+}

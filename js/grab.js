@@ -4,6 +4,33 @@ var grab = {
     count: 0,
     timer: 5,
 
+    grabBump: function() {
+        var cPiece = undefined
+        if(game.currentPlayer.iden == 'piece-1') {
+            cPiece = game.player[1].icon
+            var $curSqNu = Number($("#piece-2").parent().prop("id"))
+            var $newSqNum = $curSqNu + grab.count
+            var $newSq = $("#" + $newSqNum)
+            var challengeForwardSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/powerup2.wav')
+            challengeForwardSound.play()
+            $("#piece-2").fadeOut(1000,function() {
+                $newSq.append($("#piece-2"))
+                $('#piece-2').fadeIn(1000)
+            })
+        }
+        else if(game.currentPlayer.iden == 'piece-2') {
+            cPiece = game.player[0].icon
+            var $curSqNu = Number($("#piece-1").parent().prop("id"))
+            var $newSqNum = $curSqNu + grab.count
+            var $newSq = $("#" + $newSqNum)
+            var challengeForwardSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/powerup2.wav')
+            challengeForwardSound.play()
+            $("#piece-1").fadeOut(1000,function() {
+                $newSq.append($("#piece-1"))
+                $('#piece-1').fadeIn(1000)
+            })
+        }
+    },
     reset: function() {
         grab.count = 0
         $('.count-bar').text("")
@@ -17,7 +44,7 @@ var grab = {
         $('#exitG').on('click', function(){                                          // 2. on click of the button
             $('#challengeModal').css({"display": "none"})                                      // change the display of the modal to 'none'
             $('.modal-grab').css({"display": "none"})  
-            game.grabBump()
+            grab.grabBump()
             grab.reset()
             $('#one-player').remove()
         })
@@ -105,6 +132,8 @@ var grab = {
                 grab.count += 1
                 console.log('grab count' + grab.count)
                 $(this).remove()
+                var catchSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/fryingpan.wav')
+                catchSound.play()
                 $('.count-bar').text("You've caught " + grab.count + " pieces!")
             })
         })
