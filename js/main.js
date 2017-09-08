@@ -4,12 +4,12 @@ var game = {
     player: [
         {
             name: undefined,
-            icon: '<img id="piece-1" class="piece" src="../images/spaceship-yellow-sm.png">',
+            icon: '<img id="piece-1" class="piece" src="~/master/images/spaceship-yellow-sm.png">',
             iden: "piece-1"
         },
         {
             name: undefined,
-            icon: '<img id="piece-2" class="piece" src="../images/spaceship-green-sm.png">',
+            icon: '<img id="piece-2" class="piece" src="~/master/images/spaceship-green-sm.png">',
             iden: "piece-2"
         }
     ],
@@ -107,7 +107,7 @@ var game = {
     },
     roll: function() {
         if(game.rollClear === 0) {                                                                                                          // If the variable rollClear has a value of 0
-            var diceSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/dice.wav')
+            var diceSound = new Audio('~/master/sounds/dice.wav')
             diceSound.play()                                                                                                                    // 1. Play the sound identified in the line above
             n = Math.ceil(Math.random() * 6)                                                                                                    // 2. Set the variable n to a random number between 0 and 6 (rounded up)
             $('.dice-num').text("You rolled a " + n)                                                                                            // 3. Show what was rolled on the screen
@@ -124,7 +124,7 @@ var n = undefined
 
 $('form').on('submit', function(evnt) {                                                                                                     // When a form is submitted,
     evnt.preventDefault()                                                                                                                       // 1. Prevent the default actions (refreshing the page)
-    var startSound = new Audio('../sounds/comet.wav')
+    var startSound = new Audio('~/master/sounds/comet.wav')
     startSound.play()                                                                                                                           // 2. Play the sound identified in the line above
     game.player[0].name = $('#p1-name').val() || "Player 1"                                                                                     // 3. Set the name of player 1 to the value of the first input box, or if it was left empty, to Player 1
     game.player[1].name = $('#p2-name').val() || "Player 2"                                                                                     // 4. Set the name of player 2 to the value of the second input box, or if it was left empty, to Player 2
