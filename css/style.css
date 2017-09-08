@@ -5,7 +5,9 @@ html, body {
 
 body {
     background-image: url('../images/sky-blue.jpg');
+    background-size: stretch;
     background-repeat: no-repeat;
+    background-position: center;
     font-family: 'Patrick Hand SC', cursive;
     letter-spacing: 2px;
     color: white;
@@ -18,6 +20,8 @@ h1 {
     color: white;
     letter-spacing: 8px;
 }
+
+/* -- Player Bar -- */
 
 input{
     font-family: 'Josefin Sans', sans-serif;
@@ -45,6 +49,8 @@ button {
     padding: 3px 2px 2px 2px;
 }
 
+/* -- Game Board -- */
+
 .board {
     width: 500px;
     margin: 0 auto 20px;
@@ -60,45 +66,39 @@ button {
     border: 1px solid gray;
 }
 
-.backward {
-    background-image: url('../images/vortex-back.jpg');
+.backward, .forward, .challenge, .start, .finish {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.backward {
+    background-image: url('../images/vortex-back.jpg');
 }    
 
 .forward {
     background-image: url('../images/vortex-forward.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    
 }
 
 .challenge {
     background-image: url('../images/vortex-challenge.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
-.start, .finish {
-    background: black;
-    background: rgba(115, 56, 231, 0.30);
+.start {
+    background-image: url('../images/planet.png');
+    border: 0;
 }
 
-
-.gray {
-    background: lightgray;
-}
-
-p {
-    position: absolute;
+.finish {
+    background-image: url('../images/earth.png');
+    border: 0;
 }
 
 .blank {
     visibility: hidden;
 }
+
+/* -- Game Pieces -- */
 
 #piece-1, #piece-2 {
     width: 50%;
@@ -113,6 +113,8 @@ p {
 .clear-both {
     clear: both;
 }
+
+/* -- Roll Bar -- */
 
 .roll-bar {
     margin-top: 20px;
@@ -136,6 +138,8 @@ p {
     display: block;
     float:right;
 }
+
+/* -- Modal -- */
 
 .modal {
     display: none;
@@ -177,15 +181,7 @@ p {
     font-size: 15px;
 }
 
-.modal-tic {
+.modal-tic, .modal-grab {
     display: none;
 }
 
-.modal-grab {
-    display: none;
-}
-
-.one-player, .two-player {
-    clear:both;
-    display: block;
-}

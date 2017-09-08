@@ -1,0 +1,45 @@
+.field { 
+    width: 100%;
+    height: 500px;
+
+}
+
+.info {
+    width: 100%;
+    margin-bottom: 5px;
+    text-align:center;
+}
+
+p {
+    width: 100%;
+    text-align: center;
+}
+
+.time-bar {
+    height: 50px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.go {
+    margin: 0 auto;
+}
+
+.count-bar {
+    text-align: center;
+}
+
+.screw {
+    width: 100px;
+    height: 100px;
+    background-image: url('file:///Users/katiegoines/WDI_51/W03/project_01_game/images/screw.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    display:inline-block;
+}
+
+#exitG {
+    float:right;
+}

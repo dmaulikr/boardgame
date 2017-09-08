@@ -30,7 +30,7 @@ var game = {
         else if(game.currentPlayer === game.player[1] && game.rollClear === 0) {
             game.currentPlayer = game.player[0]
         }
-        $('.turn-bar').text(game.currentPlayer.name + ", you're up.")                             //console.log(game.currentPlayer.name)
+        $('.turn-bar').text(game.currentPlayer.name + ", you're up.")
     },
     gameOver: function(){
         if($('#52').html() !== '') {
@@ -58,8 +58,6 @@ var game = {
             })
         }
     },
-    
-    
     challenge: function($piece) {
         if($piece.parent().prop("class") == "square challenge") {
             var challengeStartSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/explosionultrabass.wav')
@@ -69,14 +67,12 @@ var game = {
             $('.modal-question').css({"display": "block"})
             $('#challengeModal').css({"display": "block"})
             $('modal-tic').css({"display": "none"})
-            
-            //$('.modal-content').append($challengeQuestion)
         }
     },
     checkWinner: function(target) {
         if(target === 52) {
             $('h1').text('Winner')
-            $('body').css({"background-image": "url('images/giphy.gif')"})
+            $('body').css({"background-image": "url('images/earth.gif')"})
         }
     },
     movePiece: function() {

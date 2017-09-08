@@ -1,6 +1,6 @@
 // Grab Game
 var grab = {
-    $planet: $('.planet'),
+    $screw: $('.screw'),
     count: 0,
     timer: 5,
 
@@ -36,7 +36,7 @@ var grab = {
         $('.count-bar').text("")
         grab.timer = 6
         $('.time-bar').text("Time left: " + grab.timer + " seconds")
-        $('.planet'). remove()
+        $('.screw'). remove()
         $('#exitG').remove()
     },
     gameOver: function() {                                                        // FINISH THE GAME
@@ -46,20 +46,20 @@ var grab = {
             $('.modal-grab').css({"display": "none"})  
             grab.grabBump()
             grab.reset()
-            $('#one-player').remove()
+            // $('#one-player').remove()
         })
     },
 
     playGame: function() {
         $(".go").on('click', function() {
-            $('.field').append('<div id="o1" class="planet"></div><div id="o2" class="planet"></div><div id="o3" class="planet"></div><div id="o4" class="planet"></div><div id="o5" class="planet"></div><div id="o6" class="planet"></div><div id="o7" class="planet"></div><div id="o8" class="planet"></div>')
+            $('.field').append('<div id="o1" class="screw"></div><div id="o2" class="screw"></div><div id="o3" class="screw"></div><div id="o4" class="screw"></div><div id="o5" class="screw"></div><div id="o6" class="screw"></div><div id="o7" class="screw"></div><div id="o8" class="screw"></div>')
             $('.go').css({"display": "none"})
             function fn(){
                 $('.time-bar').text("Time left: " + grab.timer + " seconds")
                 grab.timer = grab.timer - 1
                 if (grab.timer < 0){ 
                     clearInterval(timerInterval)
-                    $('.planet').remove()
+                    $('.screw').remove()
                     grab.gameOver()
                     }
                 }
@@ -128,7 +128,7 @@ var grab = {
                 }, 600)
             })
         
-            $(".planet").on('click', function() {
+            $(".screw").on('click', function() {
                 grab.count += 1
                 console.log('grab count' + grab.count)
                 $(this).remove()

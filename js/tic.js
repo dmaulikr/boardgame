@@ -33,7 +33,6 @@ var tic = {
             
         }
         else if(x < 0 && game.currentPlayer.iden == 'piece-2') {
-            console.log('move!')
             cPiece = game.player[0].icon
             var $curSqNu = Number($("#piece-1").parent().prop("id"))
             var $newSqNum = $curSqNu - 5
@@ -112,11 +111,11 @@ var tic = {
     switchPlayer: function() {                                                  // SWITCH PLAYER
         if(tic.currentPlayer === tic.player[0]){                                    // if the current player is player 1
             tic.currentPlayer = tic.player[1]                                           // switch the current player to player 2
-            //console.log("Player 2's turn")
+            console.log("Player 2's turn")
         }
         else if(tic.currentPlayer === tic.player[1]) {                              // but if the current player is player 2
             tic.currentPlayer = tic.player[0]                                           // switch the current player to player 1
-            //console.log("Player 1's turn")
+            console.log("Player 1's turn")
         }
         $('.status-bar').text("It's " + tic.currentPlayer.name + "'s turn!")        // and update the status bar to announce the current player   
     },
@@ -155,9 +154,9 @@ var tic = {
                         var thudSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/thud.wav')
                         thudSound.play()
                     }
-                    tic.squaresFilled += 1
                     if(tic.checkWinner() !== true && tic.isFull !== true) {
                         tic.switchPlayer()
+                        tic.squaresFilled += 1
                     }
                     else {
                         console.log('game over')
