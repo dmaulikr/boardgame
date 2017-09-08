@@ -11,20 +11,20 @@ Taking turns, two players "roll dice" to move their spaceships forward on the bo
 This is mostly a game of chance, dependent heavily on players' roll, but if players land on a "challenge" space, they can try to get ahead by beating their opponent at tic-tac-toe or catching screws flying around.
 
 ### To play
---
+
 1. Enter player 1 and player 2's names (or name your spaceships!)
 2. Click 'Go' to start the game
 3. Click 'Roll'
 4. Click on your spaceship game piece to move it forward
 
 ### Technology Used
---
+
 HMTL, CSS, JavaScript
 
 The game boards were created and styled using HTML and CSS, and the game's interactivity was developed with JavaScript
 
 ### User Stories
---
+
 As a player, I can enter my player name for easier tracking of turns.
 
 As a player, I click a button to stand-in for dice-rolling, to find out what spot I will move to.
@@ -36,7 +36,7 @@ As a player, I can play a sub game if I land on a "challenge" space, so the game
 As a player, I know when I've won because it is announced clearly.
 
 ### Outstanding Challenges
--- 
+
 The tic-tac-toe board and the catching challenge code needs to be refactored. This code is not DRY. But these are bonus games, so..
 
 When a player lands on a "challenge" space, the intention was to allow them to choose whether they want to play a one- or two-player game. I broke the code, though, and neither supplementary game is resetting correctly after the first time it's played. Until this can be figured out, this has been detoured around and commented out.
@@ -44,7 +44,7 @@ When a player lands on a "challenge" space, the intention was to allow them to c
 When the challenge has already been played. I want there to be a message saying that the player doesn't have to do the challenge since it's been done. It's not working, so it's commented out.
 
 ### Future Work
--- 
+
 As a player, I want additional challenge games for more excitement.
 
 As a player, I want to choose my own avatar.
@@ -54,7 +54,7 @@ As a player, I want my piece to "fly" to it's next spot.
 As a player, I want additional animations.
 
 ### Acknowledgements
---
+
 #### Images
 - http://biezumd.com/clipart/clipart-spaceship.html
 spaceship -green 
@@ -86,5 +86,5 @@ spaceship -green
 - http://soundbible.com/308-Large-Thump-Or-Bump.html
 
 ### Note
---
+
 This game is by no means scientifically accurate. Obviously.
