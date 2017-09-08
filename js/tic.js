@@ -4,11 +4,11 @@ var tic = {
     player: [
         {
             name: "Player",
-            symbol: '<img id="hole" src="https://i.imgur.com/6rWTYMn.png">'
+            symbol: '<img id="hole" class="https://i.imgur.com/6rWTYMn.png">'
         },
         {
             name: "Challenger",
-            symbol: '<img id="asteroid" src="https://i.imgur.com/elZKMAQ.png">'
+            symbol: '<img id="asteroid" class ="https://i.imgur.com/elZKMAQ.png">'
         }
     ],
     $box: $('.box'),
@@ -24,8 +24,8 @@ var tic = {
             var $curSqNu = Number($("#piece-2").parent().prop("id"))
             var $newSqNum = $curSqNu - 5
             var $newSq = $("#" + $newSqNum)
-            var challengeBackSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/lasergun.wav')
-            challengeBackSound.play()
+            // var challengeBackSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/lasergun.wav')
+            // challengeBackSound.play()
             $("#piece-2").fadeOut(1000,function() {
                 $newSq.append($("#piece-2"))
                 $('#piece-2').fadeIn(1000)
@@ -37,8 +37,8 @@ var tic = {
             var $curSqNu = Number($("#piece-1").parent().prop("id"))
             var $newSqNum = $curSqNu - 5
             var $newSq = $("#" + $newSqNum)
-            var challengeBackSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/lasergun.wav')
-            challengeBackSound.play()
+            // var challengeBackSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/lasergun.wav')
+            // challengeBackSound.play()
             $("#piece-1").fadeOut(1000,function() {
                 $newSq.append($("#piece-1"))
                 $('#piece-1').fadeIn(1000)
@@ -49,8 +49,8 @@ var tic = {
             var $curSqNu = Number($("#piece-2").parent().prop("id"))
             var $newSqNum = $curSqNu + 6
             var $newSq = $("#" + $newSqNum)
-            var challengeForwardSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/powerup2.wav')
-            challengeForwardSound.play()
+            // var challengeForwardSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/powerup2.wav')
+            // challengeForwardSound.play()
             $("#piece-2").fadeOut(1000,function() {
                 $newSq.append($("#piece-2"))
                 $('#piece-2').fadeIn(1000)
@@ -62,8 +62,8 @@ var tic = {
             var $curSqNu = Number($("#piece-1").parent().prop("id"))
             var $newSqNum = $curSqNu + 6
             var $newSq = $("#" + $newSqNum)
-            var challengeForwardSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/powerup2.wav')
-            challengeForwardSound.play()
+            // var challengeForwardSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/powerup2.wav')
+            // challengeForwardSound.play()
             $("#piece-1").fadeOut(1000,function() {
                 $newSq.append($("#piece-1"))
                 $('#piece-1').fadeIn(1000)
@@ -147,12 +147,12 @@ var tic = {
                 if($(this).text() === ''){
                     $(this).html(tic.currentPlayer.symbol)
                     if(tic.currentPlayer === tic.player[0]){
-                        var blastSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/balloon.wav')
-                        blastSound.play()
+                        // var blastSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/balloon.wav')
+                        // blastSound.play()
                     }
                     else if (tic.currentPlayer === tic.player[1]){
-                        var thudSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/thud.wav')
-                        thudSound.play()
+                        // var thudSound = new Audio('https://github.com/katiegoines/boardgame/blob/master/sounds/thud.wav')
+                        // thudSound.play()
                     }
                     if(tic.checkWinner() !== true && tic.isFull !== true) {
                         tic.switchPlayer()
