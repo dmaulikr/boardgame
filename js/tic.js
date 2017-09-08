@@ -3,8 +3,8 @@
 var tic = {
     player: [
         {
-            name: "Defender",
-            symbol: '<img id="hole" src="https://t3.ftcdn.net/jpg/01/41/84/84/500_F_141848405_Xe2Ltjeyj7Z8zwDfWQ0rNIIt4gJ8JZDh.jpg">'
+            name: "Player",
+            symbol: '<img id="hole" src="file:///Users/katiegoines/WDI_51/W03/project_01_game/images/hole2.png">'
         },
         {
             name: "Challenger",
@@ -16,15 +16,6 @@ var tic = {
     squaresFilled: 0,
 
     // Functions
-    getName: function() {
-        if(game.currentPlayer === game.player[0]){
-            tic.player[1].name = game.player[1].name
-        }
-        else if(game.currentPlayer === game.player[1]){
-            tic.player[1].name = game.player[0].name
-        }
-        return tic.player[1].name
-    },
     checkLine: function(a,b,c) {                                                // CHECK IF ANY LINE HAS MATCHING SYMBOLS
         if ($('.box')[a].innerHTML === $('.box')[b].innerHTML &&                    // if the inner text of box A is equal to the inner text of box B 
             $('.box')[a].innerHTML === $('.box')[c].innerHTML &&                    // AND the inner text of box A is equal to the inner text of box C
@@ -46,18 +37,18 @@ var tic = {
     },
     draw: function() {                                                          // CHECK IF THE GAME WAS A DRAW
         if(tic.isFull() === true && tic.checkWinner() !== false) {                  // if the board is full but there is no winner
-            $('.status-bar').text("It's a draw. " + tic.player[0].name + ", stay where you are.")          // update the status bar to announce there was no winner
+            $('.status-bar').text("It's a draw. " + tic.player[0].name + ", stay where you are. Click 'exit' to continue the game")          // update the status bar to announce there was no winner
             return true                                                                 // return true
         }
     },
     whoWinner: function() {                                                     // FIND OUT WHO THE WINNER IS
         if(tic.checkWinner() === true){                                             // if someone has won the game
             if(tic.currentPlayer === tic.player[0]) {                                   // and if the current player (thus the winner) is player 1
-                $('.status-bar').text(tic.currentPlayer.name + ", go forward 6 extra spaces!")  // update the status bar to show that player 1 won
+                $('.status-bar').text(tic.currentPlayer.name + ", you got through! Go forward 6 extra spaces! Click 'exit' to continue the game.")  // update the status bar to show that player 1 won
                 x = 6
             }
             else if (tic.currentPlayer === tic.player[1]) {                             // but if the current player (thus the winner) is player 2
-                $('.status-bar').text(tic.player[0].name + ", you've been bumped back 5 spaces")  // update the status bar to show that player 2 won
+                $('.status-bar').text(tic.player[0].name + ", Challenger blocked you. You've been bumped back 5 spaces. Click 'exit' to continue the game.")  // update the status bar to show that player 2 won
                 x = -6
             }
             console.log(tic.currentPlayer.name)                                         // and console log the current player's name
@@ -117,4 +108,3 @@ var tic = {
 
 tic.currentPlayer = tic.player[0]
 var x = undefined
-tic.player[1].name = tic.getName()

@@ -5,12 +5,12 @@ var game = {
     player: [
         {
             name: undefined,
-            icon: '<img id="piece-1" class="piece" src="http://images.clipartpanda.com/spaceship-clipart-rocket-dark-blue-window-hi.png">',
+            icon: '<img id="piece-1" class="piece" src="file:///Users/katiegoines/WDI_51/W03/project_01_game/images/spaceship-yellow-sm.png">',
             iden: "piece-1"
         },
         {
             name: undefined,
-            icon: '<img id="piece-2" class="piece" src="http://www.clker.com/cliparts/R/a/Z/H/O/K/green-rocket-md.png">',
+            icon: '<img id="piece-2" class="piece" src="file:///Users/katiegoines/WDI_51/W03/project_01_game/images/spaceship-green-sm.png">',
             iden: "piece-2"
         }
     ],
@@ -30,7 +30,7 @@ var game = {
         else if(game.currentPlayer === game.player[1] && game.rollClear === 0) {
             game.currentPlayer = game.player[0]
         }
-        $('.turn-bar').text("Turn: " + game.currentPlayer.name)                             //console.log(game.currentPlayer.name)
+        $('.turn-bar').text(game.currentPlayer.name + ", you're up.")                             //console.log(game.currentPlayer.name)
     },
     gameOver: function(){
         if($('#52').html() !== '') {
@@ -40,17 +40,21 @@ var game = {
     },
     bump: function($piece, targetNum) {
         if($piece.parent().prop("class") == "square backward") {
-            $piece.fadeOut(1000, function() {
+            var bumpBackSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/laser.wav')
+            bumpBackSound.play()
+            $piece.fadeOut(400, function() {
                 targetNum -= 1
                 $('#' + targetNum).append($piece)
-                $piece.fadeIn(1000)
+                $piece.fadeIn(400)
             })
         }
         else if($piece.parent().prop("class") == "square forward") {
-            $piece.fadeOut(1000, function() {
+            var bumpForwardSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/powerup.wav')
+            bumpForwardSound.play()
+            $piece.fadeOut(800, function() {
                 targetNum += 1
                 $('#' + targetNum).append($piece)
-                $piece.fadeIn(1000)
+                $piece.fadeIn(800)
             })
         }
     },
@@ -61,7 +65,8 @@ var game = {
             var $curSqNu = Number($("#piece-2").parent().prop("id"))
             var $newSqNum = $curSqNu - 5
             var $newSq = $("#" + $newSqNum)
-
+            var challengeBackSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/lasergun.wav')
+            challengeBackSound.play()
             $("#piece-2").fadeOut(1000,function() {
                 $newSq.append($("#piece-2"))
                 $('#piece-2').fadeIn(1000)
@@ -74,7 +79,8 @@ var game = {
             var $curSqNu = Number($("#piece-1").parent().prop("id"))
             var $newSqNum = $curSqNu - 5
             var $newSq = $("#" + $newSqNum)
-
+            var challengeBackSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/lasergun.wav')
+            challengeBackSound.play()
             $("#piece-1").fadeOut(1000,function() {
                 $newSq.append($("#piece-1"))
                 $('#piece-1').fadeIn(1000)
@@ -85,7 +91,8 @@ var game = {
             var $curSqNu = Number($("#piece-2").parent().prop("id"))
             var $newSqNum = $curSqNu + 6
             var $newSq = $("#" + $newSqNum)
-
+            var challengeForwardSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/powerup2.wav')
+            challengeForwardSound.play()
             $("#piece-2").fadeOut(1000,function() {
                 $newSq.append($("#piece-2"))
                 $('#piece-2').fadeIn(1000)
@@ -97,7 +104,8 @@ var game = {
             var $curSqNu = Number($("#piece-1").parent().prop("id"))
             var $newSqNum = $curSqNu + 6
             var $newSq = $("#" + $newSqNum)
-
+            var challengeForwardSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/powerup2.wav')
+            challengeForwardSound.play()
             $("#piece-1").fadeOut(1000,function() {
                 $newSq.append($("#piece-1"))
                 $('#piece-1').fadeIn(1000)
@@ -131,6 +139,8 @@ var game = {
     },
     challenge: function($piece) {
         if($piece.parent().prop("class") == "square challenge") {
+            var challengeStartSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/explosionultrabass.wav')
+            challengeStartSound.play()
             console.log('challenge')
             $('.modal-content').css({"display": "block"})
             $('.modal-question').css({"display": "block"})
@@ -151,6 +161,8 @@ var game = {
             var $currentSquareNum = Number($(this).parent().prop("id"))         //console.log("current sq num: " + $currentSquareNum)
             var newSquareNum = $currentSquareNum + n                            //console.log("new sq num: " + newSquareNum)    //console.log("n: " + n)
             var $newSquare = $('#' + newSquareNum)
+            var regMoveSound = new Audio('file:///Users/katiegoines/WDI_51/W03/project_01_game/sounds/laserblast.wav')
+            regMoveSound.play()
             $(this).fadeOut(500, function() {
                 $newSquare.append($(this))
                 $(this).fadeIn(500, function() {
@@ -186,10 +198,7 @@ $('form').on('submit', function(evnt) {
     game.player[0].name = $('#p1-name').val() || "Player 1"
     game.player[1].name = $('#p2-name').val() || "Player 2"
     $('form').fadeOut(1000, function() {
-        //var $playerTurn = $('<p>').addClass("turnPara").text("Turn: " + game.currentPlayer.name)
-        //$('.turn-bar').append($playerTurn)
-        //$playerTurn.fadeIn(1000)
-        $('.turn-bar').text("Turn: " + game.currentPlayer.name)
+        $('.turn-bar').html(game.currentPlayer.name + " is up first. Click the 'roll' button then click your piece to move.")
     })
 
     $('#0').append(game.player[0].icon, game.player[1].icon)
